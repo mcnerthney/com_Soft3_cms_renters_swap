@@ -1,0 +1,28 @@
+<div class="interest">
+<%= form_for @interest do |f| %>
+<% if @interest.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@interest.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+    <ul>
+    <% @interest.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<h2>Thanks for your interest!<br/>We're in development and would love to keep in touch.  Please enter your email and we will notify you when we're live.</h2>
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.text_field :email %>
+</div>
+<div class="actions">
+    <%= f.submit "Send email" %>
+  </div>  
+<% end %>
+
+
+<p><form accept-charset="UTF-8" action="http://www.surveymonkey.com/s/JT6HCPH" style="margin:0;padding:0;display:inline">
+	 <input name="s" type="hidden" value="newitem"><button type="submit" value="newitem" style="float:left;">Take Survey</button>
+</form></p>
+</div>

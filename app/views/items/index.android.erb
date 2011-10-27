@@ -1,0 +1,29 @@
+<h2>Items owned by <b><%= link_to "My Account", account_path %></b></h2>
+
+
+<table>
+	
+<% if @items.any? %>
+	<tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+<% @items.each do |item| %>
+  <tr>
+     <td><%= link_to item.description , edit_store_item_path(@store,item) %></td>
+
+  </tr>
+<% end %>
+<% end %>
+<tr>
+<td>
+<form accept-charset="UTF-8" action="items/new.android" method="get" style="margin:0;padding:0;display:inline">
+			<button  type="submit" value="newitem" style="float:left;"  >Add Your Item</button>
+</form></td>
+</tr>
+
+</table>
+
+

@@ -1,0 +1,147 @@
+
+
+  <div data-hook="homepage_sidebar_navigation">
+    <table>
+	<tr>
+	    <th><form accept-charset="UTF-8" method="get" style="margin:0;padding:0;display:inline">
+			 <input name="s" type="hidden" value="newitem" />
+					<button  type="submit" value="newitem" style="float:left;"  >
+		Add Rental
+		</button>
+		</form>
+		</th>
+	  </tr>
+	<% @items.each_with_index do |item, index | %>
+	  <tr>
+	     <td>
+	<%=  raw "<div id='homepage_item_title' onclick='selectMapItem(#{index})' onmouseout='deselectMapItem()'>" %>
+	        <%= link_to item.title , "#" %>
+	      </div>
+	     </td>
+	     </tr>
+
+	     
+	<% end %>
+	</table>
+ </div>
+<div data-hook="homepage_map" style="height:702px;">
+	<div id="map_canvas" style="position: absolute;top:12px;left:180px;height:702px; width:802px;" />
+</div>
+
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=true"></script>
+
+ 
+<script>(function($){
+ $(document).ready(function(){
+
+	// do stuff when div is ready
+	var latlng = new google.maps.LatLng( 45.60, -122.60 );
+	var myOptions = {
+	  zoom: 8,
+	  center: latlng,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	mMap = new google.maps.Map(document.getElementById("map_canvas"),
+	    myOptions);
+	    
+	    
+	loadMarkers();
+	    
+mInfowindow = new google.maps.InfoWindow({maxWidth:200});
+    	     
+		
+ });
+})(jQuery);
+
+    
+ <%=  raw " mItems = #{@items.to_json};" %> 
+
+
+  mbInfoOpen = 0;
+  
+	function selectMapItem( index ) {
+	    //if ( in == false ) {
+	    //if ( mbInfoOpen == 0 ) {
+		var contentString = 
+    		    "<div id='content' style='width:200px'>"+
+    		    '<div id="siteNotice">'+
+    		    '</div>'+
+    		    '<h1 id="firstHeading" class="firstHeading">' +
+    		    '<a href="/rents/' +
+    		    mItems[index].item.id +
+    		    '" >' +
+    		    mItems[index].item.title + 
+    		    '</a>' +
+    		    '</h1>'+
+    		    '<div id="bodyContent">'+
+    		    '<p>' +
+    		    mItems[index].item.description +
+    		    '</p>' +
+    		    '</div>'+
+    		    '</div>';
+       
+       // Replace our Info Window's content and position
+       mInfowindow.setContent(contentString);
+       var latlng = new google.maps.LatLng( 45.60, -122.60 ); 
+       mInfowindow.setPosition(latlng);
+       mInfowindow.open(mMap,mMarkers[index]);
+       mbInfoOpen = 1;
+     //}
+     
+
+	}
+	function deselectMapItem() {
+		  //if ( mbInfoOpen == 1 ) {
+		  //    mInfowindow.close();
+		  //    mbInfoOpen = 0;
+		  //}
+	
+	}
+	function markerClick( mark )
+	{
+	    for ( var m = 0; m < mMarkers.length; ++m )
+	    {
+	        if ( mMarkers[m] == mark ) 
+	        {
+	             selectMapItem(m);
+	             return;
+	        }
+	    }
+	}
+	
+	function loadMarkers() {
+	
+	  mMarkers = new Array();
+	  var i = 0;
+	   for ( item in mItems ) {
+	    
+         var r1 = Math.floor(Math.random()*100);
+	       var lat = 45.60 + ( (r1-50) * 0.005);
+	       var r2 = Math.floor(Math.random()*100);
+	       var lon = -122.60 + ((r2-50) * 0.005); 
+	       var myLatlng = new google.maps.LatLng( lat, lon); 
+	 
+        	mMarkers[i] = new google.maps.Marker({
+         	    position: myLatlng,
+	            map: mMap,
+	            title:'title'});
+	            
+	        mMarkers[i].setMap(mMap);
+	        google.maps.event.addListener(
+	        	   mMarkers[i], 'click', function() { markerClick(this); });
+	        	   
+		      i = i + 1;
+	        
+	  }
+	
+	// To add the marker to the map, call setMap()
+
+	
+		
+	}
+	
+</script>
+
+</div>
+

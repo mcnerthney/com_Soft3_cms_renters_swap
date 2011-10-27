@@ -1,0 +1,25 @@
+<h1>Public Name of Owner</h1>
+Enter a name that identifies the owner (that's you) of the items for rent.  You may want to enter your real name, or an alias, depending upon what you want visible to the public.<p/>
+<br/>
+<%= form_for(@store) do |f| %>
+  <% if @store.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@store.errors.count, "error") %> prohibited this store from being saved:</h2>
+
+      <ul>
+      <% @store.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+
+    <%= f.text_field :name %>
+  </div>
+<br>
+   <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

@@ -3,7 +3,13 @@ Rent::Application.routes.draw do
   root :to => "home#index"
 
   resources :users, :only => :show
-  
+  resources :stores do
+    resources :items
+  end
+
+  resources :stores, :only => :edit
+  resources :rents
+    
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

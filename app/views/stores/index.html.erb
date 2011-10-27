@@ -1,0 +1,27 @@
+<h1>Listing stores</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stores.each do |store| %>
+  <tr><td>
+	<% if store.active? %>
+	      <%= store.name %>
+	<% else %>
+	     <del><%= store.name %></del>
+	<% end %>
+</td>
+    <td><%= link_to 'Show', store %></td>
+    <td><%= link_to 'Edit', edit_store_path(store) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

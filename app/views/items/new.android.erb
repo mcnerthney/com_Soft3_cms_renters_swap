@@ -1,0 +1,29 @@
+<h2>Add an item owned by <b><%= link_to "My Account", account_path %></b></h2>
+<%= form_for @item, :url => store_items_path(@store) do |f| %>
+<% if @item.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+    <ul>
+    <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%= f.label :description %><br />
+  <%= f.text_field :description %>
+</div>
+<div class="field">
+  <%= f.label :location %><br />
+  <%= f.text_field :location %>
+</div>
+<p/><p/>
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+<% end %>
+

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+
+<h2> <%= @item.title %>
+</h2>
+</p>
+
+<p style="white-space:pre-wrap;">
+  <%= @item.description %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @item.location %>
+</p>
+
+
+
+<% if @item.store.user == @user %>
+<%= link_to "Edit" , edit_store_item_path(@item.store,@item) %>
+<% else %>
+<%= link_to 'Contact Owner', new_interest_path %>
+<% end %>
