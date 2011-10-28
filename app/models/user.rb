@@ -7,12 +7,16 @@ class User
 
   field :name
   field :admin
+  field :avatar
   
   has_many :stores
   
   validates_presence_of :name
   validates_uniqueness_of :name, :email, :case_sensitive => false
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :avatar, :avatar_cache, :remove_avatar, :name, :email, :password, :password_confirmation, :remember_me
+  
+  
+  mount_uploader :avatar, AvatarUploader
   
 end
 

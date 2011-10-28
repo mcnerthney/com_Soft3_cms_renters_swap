@@ -18,3 +18,5 @@ gem "mongoid", ">= 2.3.0"
 gem "devise", ">= 1.4.7"
 gem "nokogiri"
 gem "kaminari"
+gem "rmagick"
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

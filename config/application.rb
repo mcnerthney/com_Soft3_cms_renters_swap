@@ -15,6 +15,8 @@ end
 
 module Rent
   class Application < Rails::Application
+    
+    # config.forse_ssl = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -48,5 +50,14 @@ module Rent
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    
+    CarrierWave.configure do |config|
+      config.grid_fs_database = 'rent_development'
+      config.grid_fs_host = 'localhost'
+      config.grid_fs_access_url =  "/images"
+      config.root = ::Rails.root.to_s + "/public"
+    end
+    
   end
 end

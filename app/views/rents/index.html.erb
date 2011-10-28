@@ -3,9 +3,8 @@
   <div data-hook="homepage_sidebar_navigation">
     <table>
 	<tr>
-	    <th><form accept-charset="UTF-8" method="get" style="margin:0;padding:0;display:inline">
-			 <input name="s" type="hidden" value="newitem" />
-					<button  type="submit" value="newitem" style="float:left;"  >
+	    <th><form accept-charset="UTF-8" action="/rents/new" method="get" style="margin:0;padding:0;display:inline">
+					<button  type="submit" style="float:left;"  >
 		Add Rental
 		</button>
 		</form>
@@ -24,8 +23,8 @@
 	<% end %>
 	</table>
  </div>
-<div data-hook="homepage_map" style="height:702px;">
-	<div id="map_canvas" style="position: absolute;top:12px;left:180px;height:702px; width:802px;" />
+<div data-hook="homepage_map">
+	<div id="map_canvas" style="height:250px; width:250px;" />
 </div>
 
 
@@ -69,14 +68,14 @@ mInfowindow = new google.maps.InfoWindow({maxWidth:200});
     		    '</div>'+
     		    '<h1 id="firstHeading" class="firstHeading">' +
     		    '<a href="/rents/' +
-    		    mItems[index].item.id +
+    		    mItems[index]._id +
     		    '" >' +
-    		    mItems[index].item.title + 
+    		    mItems[index].title + 
     		    '</a>' +
     		    '</h1>'+
     		    '<div id="bodyContent">'+
     		    '<p>' +
-    		    mItems[index].item.description +
+    		    mItems[index].description +
     		    '</p>' +
     		    '</div>'+
     		    '</div>';

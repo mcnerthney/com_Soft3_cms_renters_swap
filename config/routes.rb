@@ -1,6 +1,6 @@
 Rent::Application.routes.draw do
   devise_for :users
-  root :to => "home#index"
+  root :to => "rents#index"
 
   resources :users, :only => :show
   resources :stores do
@@ -9,7 +9,13 @@ Rent::Application.routes.draw do
 
   resources :stores, :only => :edit
   resources :rents
-    
+  resources :interests, :only => :new
+  resources :interests, :only => :create
+  
+  resources :images, :only => :show
+  
+  match "/images/uploads/*path" => "gridfs#serve"
+      
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
