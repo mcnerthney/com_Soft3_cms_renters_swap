@@ -4,14 +4,20 @@ Rent::Application.routes.draw do
 
   resources :users, :only => :show
   resources :stores do
-    resources :items
+    resources :items do
+      resources :photos do
+        collection do
+          post 'sort'
+        end
+      end
+    end
   end
 
   resources :stores, :only => :edit
   resources :rents
   resources :interests, :only => :new
   resources :interests, :only => :create
-  
+ 
   resources :images, :only => :show
   
   match "/images/uploads/*path" => "gridfs#serve"

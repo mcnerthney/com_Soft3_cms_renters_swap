@@ -22,8 +22,8 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find_by_id_and_store_id(params[:id],params[:store_id])
-    if @item.nil? || @item.store.user_id != User.current.id 
+    @item = Item.find(params[:id])
+    if @item.nil? || @item.store.user_id != current_user.id 
       redirect_to root_path
     else
       respond_to do |format|

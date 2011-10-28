@@ -14,7 +14,21 @@
   <b>Owner:</b>
   <%= @item.store.name %>
 </p>
-
+<table>
+<% if @item.photos.any? %>
+<% @item.photos.each do |photo| %>
+  <tr><td>
+  <%= photo.title %>
+  <br/>
+  <%= link_to image_tag(photo.image.thumb.url), store_item_photo_path(@item.store,@item,photo) %>
+  <br/>
+  <%= link_to 'edit', edit_store_item_photo_path(@item.store, @item, photo) %>
+  |
+  <%= link_to 'del', store_item_photo_path(@item.store, @item, photo), :confirm => 'Are you sure?', :method => :delete %>
+     </td></tr>
+<% end %>
+<% end %>
+</table>
 
 <%= link_to 'Edit', edit_store_item_path(@store,@item) %> |
 <%= link_to 'Items', store_items_path(@store) %>

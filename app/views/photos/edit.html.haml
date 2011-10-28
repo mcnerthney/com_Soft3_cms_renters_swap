@@ -1,0 +1,9 @@
+%h1 Editing photo
+
+= render 'form'
+
+= link_to 'Show', [@photo.item.store, @photo.item, @photo]
+|
+= link_to 'Back', [@photo.item.store, @photo.item]
+|
+= link_to 'Destroy', [@photo.item.store, @photo.item, @photo], :confirm => 'Are you sure?', :method => :delete

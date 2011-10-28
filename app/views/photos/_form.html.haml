@@ -1,0 +1,19 @@
+= form_for @photo, :url => store_item_photos_path(@item.store_id, @item.id), :html => { :multipart => true } do |f|
+  -if @photo.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:"
+      %ul
+        - @photo.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :image
+    = f.file_field :image
+    = f.hidden_field :image_cache
+  .actions
+    = f.submit
+    or
+    = link_to 'Cancel', store_item_path(@item.store.id, @item.id)

@@ -1,0 +1,11 @@
+%p
+  %b Title:
+  = @photo.title
+
+%p
+  = image_tag @photo.image.url if @photo.image.url
+
+%br
+= link_to 'Edit', edit_store_item_photo_path(@photo.item.store, @photo.item, @photo)
+\|
+= link_to 'Back', [@photo.item.store, @photo.item]

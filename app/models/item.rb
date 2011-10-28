@@ -6,7 +6,9 @@ class Item
   field :description
   field :active
   field :location
-  
+
+  embeds_many :photos  
+
   validates :title,  :presence => true,
                      :length   => { :maximum => 150 }
   validates :description, :presence => true
