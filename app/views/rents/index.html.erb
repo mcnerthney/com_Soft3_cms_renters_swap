@@ -11,11 +11,7 @@
   <div data-hook="homepage_sidebar_navigation">
     <table>
 	<tr>
-	    <th><form accept-charset="UTF-8" action="/rents/new" method="get" style="margin:0;padding:0;display:inline">
-					<button  type="submit" style="float:left;"  >
-		Add Rental
-		</button>
-		</form>
+	    <th>
 		</th>
 	  </tr>
 	<% @items.each_with_index do |item, index | %>
@@ -156,17 +152,85 @@
 	
 </script>
 
+   <style type="text/css">
+    #slider { margin: 10px; }
+  </style>
+
+</head>
+<body style="font-size:62.5%;">
+  
+<div id="slider"></div>
+
+	<style>
+	#demo-frame > div.demo { padding: 10px !important;   };
+	</style>
+	<script>
+	$(function() {
+		$( "#slider-price" ).slider({
+			min: 5,
+			step: 5,
+			max: 150,
+			values: [ 20, 50 ],
+			slide: function( event, ui ) {
+		         $( "#price" ).val( "$" + $( "#slider-price" ).slider( "values", 0 ) + " - $" + $( "#slider-price" ).slider( "values", 1 ) );
+
+			}
+		});
+		$( "#price" ).val( "$" + $( "#slider-price" ).slider( "values", 0 ) + " - $" + $( "#slider-price" ).slider( "values", 1 ) );
+	});
+	$(function() {
+		$( "#slider-distance" ).slider({
+			min: 2,
+			max: 100,
+			values: [ 5 ],
+			slide: function( event, ui ) {
+				$( "#distance" ).val( ui.values[ 0 ] + " miles" );
+			}
+		});
+		$( "#distance" ).val( $( "#slider-distance" ).slider( "values", 0 ) + " miles" );
+	});
+	</script>
+
+
+
+<style type="text/css">
+div.padding {padding-bottom:1cm;}
+div.padding2 {padding-top:50%;}
+</style>
 
 
             </div>
 			<div id="rightcol">
-			<div data-hook="homepage_map">
-	<div id="map_canvas" style="height:150px; width:150px;" />
+			<div class="padding">
+			<form accept-charset="UTF-8" action="/rents/new" method="get" style="margin:0;padding:0;display:inline">
+					<button  type="submit" style="float:left;"  >
+		Add Rental
+		</button>
+		</form>
+		</div>
+			<div data-hook="homepage_map" style="padding-top:10px;">
+				<div id="map_canvas" style="height:200px; width:200px;" />
+				</div>
+<div class="demo" style="width:200px;" >
+<p>
+
+	<label for="price">price:</label>
+	<input type="text" id="price" style="border:0; color:#f6931f; font-weight:bold;" />
+</p>
+<div id="slider-price"></div>
+</div>
+<div class="demo" style="width:200px;" >
+<p>
+	<label for="distance">distance:</label>
+	<input type="text" id="distance" style="border:0; color:#f6931f; font-weight:bold;" />
+</p>
+<div id="slider-distance"></div>
+
 </div>
 
 </div>
         </div>	
-</div>
+</div> 
     <div id="leftcol"></div>
 </div>
 	
