@@ -22,7 +22,7 @@
 	  <tr>
 	     <td>
 	<%=  raw "<div id='homepage_item_title' onmouseover='selectMarker(#{index});'>" %>
-	        <%= link_to item.title , store_item_path(item.store, item) %>
+	        <%= link_to item.title , rent_path(item) %>
 	      </div>
 	     </td>
 	     </tr>
@@ -159,7 +159,7 @@
 
 
             </div>
-			<div id="rightcol">right
+			<div id="rightcol">
 			<div data-hook="homepage_map">
 	<div id="map_canvas" style="height:150px; width:150px;" />
 </div>
@@ -167,7 +167,7 @@
 </div>
         </div>	
 </div>
-    <div id="leftcol">left</div>
+    <div id="leftcol"></div>
 </div>
 	
 
