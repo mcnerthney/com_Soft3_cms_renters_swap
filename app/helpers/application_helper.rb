@@ -67,5 +67,44 @@ module ApplicationHelper
             </script>
         }.gsub(/[\n ]+/, ' ').strip.html_safe
     end
+    
+    MAP_SIZE_IN_MAP_COORDINATES = 2147483648
+    MAXIMUM_LATITUDE= 8505112;
+    MINIMUM_LATITUDE = -8505112;
+    MINIMUM_LONGITUDE = -18000000;
+    MAXIMUM_LONGITUDE = 18000000;
+    
+    def geo_string_to_x_y ( pt )
+    
+    ps =  pt.split(/,/)
+    lon = ps[0].to_f
+    lat = ps[1].to_f
+    
+    clat = [lat,MINIMUM_LATITUDE].max
+    clat = [clat, MAXIMUM_LATITUDE].min
+    
+    clon = [lon,MINIMUM_LONGITUDE].max
+    clon = [clon, MAXIMUM_LONGITUDE].min
+    
+    realLatitude = clat 
+    realLongitude = clon
+    
+    rx = ( realLongitude + 180.0 ) / 360.0
+    sinLatitude = Math.sin (  ( realLatitude * Math::PI ) / 180.0 )
+    subexpression =  (1.0 +  sinLatitude ) / (1.0 - sinLatitude)
+    
+    ry =  0.5 - ( Math.log(subexpression) / (4.0 * Math::PI ) )
+    
+    rx = [ (rx *  MAP_SIZE_IN_MAP_COORDINATES) , (MAP_SIZE_IN_MAP_COORDINATES - 1.0) ].min
+    rx = [ rx, 0.0 ].max
+    
+    ry = [ ry *  MAP_SIZE_IN_MAP_COORDINATES , MAP_SIZE_IN_MAP_COORDINATES - 1.0 ].min
+    ry = [ ry, 0.0 ].max
+    
+    return rx.to_int, ry.to_int
+    
+    
+    end
+
 
 end
