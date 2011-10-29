@@ -1,8 +1,8 @@
 .photo[photo]
   = photo.title
   %br
-  = link_to(image_tag(photo.image.thumb.url), [@story, photo]) if photo.image.thumb.url
+  = link_to(image_tag(photo.image.thumb.url), [@item.store, @item, photo]) if photo.image.thumb.url
   %br
-  = link_to 'edit', edit_story_photo_path(@story, photo)
+  = link_to 'edit', edit_store_item_photo_path(@item.store, @item, photo)
   |
-  = link_to 'del', [@story, photo], :confirm => 'Are you sure?', :method => :delete
+  = link_to 'del', [@item.store, @item, photo], :confirm => 'Are you sure?', :method => :delete

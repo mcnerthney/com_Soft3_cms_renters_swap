@@ -1,3 +1,11 @@
+<div>	
+	  <div id="wrapper" class="clearfix">
+		<div id="twocols"> 
+			<div id="maincol">
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
 
 
   <div data-hook="homepage_sidebar_navigation">
@@ -13,8 +21,8 @@
 	<% @items.each_with_index do |item, index | %>
 	  <tr>
 	     <td>
-	<%=  raw "<div id='homepage_item_title' onclick='selectMapItem(#{index})' onmouseout='deselectMapItem()'>" %>
-	        <%= link_to item.title , "#" %>
+	<%=  raw "<div id='homepage_item_title' onmouseover='selectMarker(#{index});'>" %>
+	        <%= link_to item.title , store_item_path(item.store, item) %>
 	      </div>
 	     </td>
 	     </tr>
@@ -23,10 +31,6 @@
 	<% end %>
 	</table>
  </div>
-<div data-hook="homepage_map">
-	<div id="map_canvas" style="height:250px; width:250px;" />
-</div>
-
 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=true"></script>
 
@@ -39,6 +43,7 @@
 	var myOptions = {
 	  zoom: 8,
 	  center: latlng,
+	  disableDefaultUI: true,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	mMap = new google.maps.Map(document.getElementById("map_canvas"),
@@ -47,7 +52,6 @@
 	    
 	loadMarkers();
 	    
-mInfowindow = new google.maps.InfoWindow({maxWidth:200});
     	     
 		
  });
@@ -56,47 +60,27 @@ mInfowindow = new google.maps.InfoWindow({maxWidth:200});
     
  <%=  raw " mItems = #{@items.to_json};" %> 
 
+      var pinColor = "FE7569";
+      var pinColorSelected = "00FE69";
+      var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+         new google.maps.Size(21, 34),
+         new google.maps.Point(0,0),
+         new google.maps.Point(10, 34));
+      var pinImageSelected = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorSelected,
+         new google.maps.Size(21, 34),
+         new google.maps.Point(0,0),
+         new google.maps.Point(10, 34));
 
-  mbInfoOpen = 0;
-  
-	function selectMapItem( index ) {
-	    //if ( in == false ) {
-	    //if ( mbInfoOpen == 0 ) {
-		var contentString = 
-    		    "<div id='content' style='width:200px'>"+
-    		    '<div id="siteNotice">'+
-    		    '</div>'+
-    		    '<h1 id="firstHeading" class="firstHeading">' +
-    		    '<a href="/rents/' +
-    		    mItems[index]._id +
-    		    '" >' +
-    		    mItems[index].title + 
-    		    '</a>' +
-    		    '</h1>'+
-    		    '<div id="bodyContent">'+
-    		    '<p>' +
-    		    mItems[index].description +
-    		    '</p>' +
-    		    '</div>'+
-    		    '</div>';
-       
-       // Replace our Info Window's content and position
-       mInfowindow.setContent(contentString);
-       var latlng = new google.maps.LatLng( 45.60, -122.60 ); 
-       mInfowindow.setPosition(latlng);
-       mInfowindow.open(mMap,mMarkers[index]);
-       mbInfoOpen = 1;
-     //}
-     
-
-	}
-	function deselectMapItem() {
-		  //if ( mbInfoOpen == 1 ) {
-		  //    mInfowindow.close();
-		  //    mbInfoOpen = 0;
-		  //}
-	
-	}
+    selectIndex = -1;
+    
+    function  getItemLatLon(i)
+    {
+       var r1 = Math.floor(Math.random()*100);
+	   var lat = 45.60 + ( (r1-50) * 0.005);
+	   var r2 = Math.floor(Math.random()*100);
+	   var lon = -122.60 + ((r2-50) * 0.005); 
+	   return myLatlng = new google.maps.LatLng( lat, lon); 
+    }
 	function markerClick( mark )
 	{
 	    for ( var m = 0; m < mMarkers.length; ++m )
@@ -109,6 +93,36 @@ mInfowindow = new google.maps.InfoWindow({maxWidth:200});
 	    }
 	}
 	
+
+  	function selectMarker(i)
+  	{
+  		
+	   if ( selectIndex > -1 ) {
+	     j = selectIndex;
+	     mMarkers[j].setMap(null);
+	     latlon = getItemLatLon(j);
+  	     mMarkers[j] = new google.maps.Marker({
+         	    position: latlon,
+	            map: mMap,
+	            title:'title',
+	            icon: pinImage });
+  	     mMarkers[j].setMap(mMap);   	   
+
+	   }
+       latlon = getItemLatLon(i);
+  	   mMarkers[i].setMap(null);
+  	   mMarkers[i] = new google.maps.Marker({
+         	    position: latlon,
+	            map: mMap,
+	            title:'title',
+	            icon: pinImageSelected });
+  	   mMarkers[i].setMap(mMap);  
+  	   google.maps.event.addListener(
+	       mMarkers[i], 'click', function() { markerClick(this); });
+	        	   
+  	   selectIndex = i;
+  	}
+  	
 	function loadMarkers() {
 	
 	  mMarkers = new Array();
@@ -124,8 +138,9 @@ mInfowindow = new google.maps.InfoWindow({maxWidth:200});
         	mMarkers[i] = new google.maps.Marker({
          	    position: myLatlng,
 	            map: mMap,
-	            title:'title'});
-	            
+	            title:'title',
+	            icon: pinImage });
+          
 	        mMarkers[i].setMap(mMap);
 	        google.maps.event.addListener(
 	        	   mMarkers[i], 'click', function() { markerClick(this); });
@@ -134,7 +149,6 @@ mInfowindow = new google.maps.InfoWindow({maxWidth:200});
 	        
 	  }
 	
-	// To add the marker to the map, call setMap()
 
 	
 		
@@ -142,5 +156,18 @@ mInfowindow = new google.maps.InfoWindow({maxWidth:200});
 	
 </script>
 
+
+
+            </div>
+			<div id="rightcol">right
+			<div data-hook="homepage_map">
+	<div id="map_canvas" style="height:150px; width:150px;" />
 </div>
+
+</div>
+        </div>	
+</div>
+    <div id="leftcol">left</div>
+</div>
+	
 

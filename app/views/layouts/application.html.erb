@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rent</title>
+  <title>Renters Swap</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <ul class="hmenu">
-    <%= render 'shared/navigation' %>
-  </ul>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<div id="pagewidth" > 
+<div>
+	  <div class='left'>
+	  	    <div id="header_left">
+<%= link_to image_tag('logo.png'), root_path %>
+	  	    </div>
+	  </div>
 
+      <div class='right'>
+	    <div id="header_right">
+	      <ul class="hmenu">
+            <%= render 'shared/navigation' %>
+          </ul>
+        </div>
+      </div>
+</div>
 
 <%= yield %>
+	<div id="footer" >
+	   <br/>
+	   <ul class="fmenu">
+	   	   <li><%= link_to "Contact", "#" %></li>
+	   	   <li><%= link_to "About", "#" %></li>
+	   	   <li><%= link_to "Safety", "#" %></li>
+
+	   	   	   	   <li><%= link_to "Terms and Conditions", "#" %></li>
+	   	   	   	   <li><%= link_to "Help", "#" %></li>
+	   </ul>
+		</div>
+	</div>
+
 
 </body>
 </html>
