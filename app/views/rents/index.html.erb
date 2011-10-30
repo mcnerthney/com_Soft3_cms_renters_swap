@@ -17,9 +17,17 @@
 	<% @items.each_with_index do |item, index | %>
 	  <tr>
 	     <td>
-	<%=  raw "<div id='homepage_item_title' onmouseover='selectMarker(#{index});'>" %>
-	        <%= link_to item.title , rent_path(item) %>
-	      </div>
+	<%=  raw "<div id='homepage_item' onmouseover='selectMarker(#{index});'>" %>
+	<div id="item_search_result"> 
+	   <div id="item_search_result_picture">
+	         <%= link_to image_tag(item.photos[0].image.thumb.url), rent_path(item) %>
+	   </div>
+	   <div id="item_search_result_text" >
+	      <h2>  <%= link_to item.title , rent_path(item) %>  </h2>
+	        <%= item.description %>
+	   </div>
+    </div>
+	
 	     </td>
 	     </tr>
 

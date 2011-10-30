@@ -79,6 +79,26 @@ width:50%;
  float:right; 
  position:relative; 
  }
+ #item_search_result{ 
+   border-style:solid;
+   border-width:1px;
+   position:relative; 
+   padding: 0px 0px 0px 0px;
+ }
+ 
+#item_search_result_picture{ 
+ float:left; 
+  width:70px; 
+  position:relative;
+  padding: 15px 0px 0px 0px;
+ }
+#item_search_result_text{
+
+ width:500px; 
+ float:right; 
+ position:relative; 
+    padding: 0px 0px 0px 0px;
+ }
  
  #map_canvas {
 width:20%;
