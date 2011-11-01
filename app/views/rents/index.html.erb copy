@@ -2,45 +2,26 @@
 	<div class="colmid">
 		<div class="colleft">
 			<div class="col1">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
- 	  <% @items.each_with_index do |item, index | %>
-	  <%=  raw "<div id='homepage_item' onmouseover='selectMarker(#{index});'>" %>
-	  
-	    <div id="item_search_result_picture">
-	      <%= link_to image_tag(item.photos[0].image.thumb.url), rent_path(item) %>
-	    </div>
-	   	<div id="item_search_result_owner_picture">
-	      <%= link_to image_tag(item.store.user.avatar.thumb.url), store_path(item.store) %>
-	    </div>
-	    <div id="item_search_result"> 
-		  <div id="item_search_result_details" >
-                      <div id="item_search_result_price"  >
-              $50
-           </div>
- 
-              <div id="item_search_result_text"  >
-	            <h2>  <%= link_to item.title , rent_path(item) %>  </h2>
-	
-	            <p>Location: <%= item.location %> <br/>
-	            <% if !item.zipcode.nil? %>
-                  Zip Code:  <%= item.zipcode.name %> <br/>
-	            <% end %>
-	   	        <p>Item.Reviews<br/>
-	            Item.Endorsements</p>
-	          </div>
- 
-	      </div>
-	 
-        </div>     
-       </div>  
-	  <% end %>
-
+				<!-- Column 1 start -->
+                 Left Side
+            
 
  			</div>
 			<div class="col2">
-			</div>
 			<div class="col3">
+			column 3
+				<!-- Column 3 start -->
+				<!-- Column 3 end -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="wrapper" class="clearfix">
+  <div id="twocols"> 
+    <div id="maincol">
+	</div>
+	<div id="rightcol">
 	  <div class="padding">
 			<form accept-charset="UTF-8" action="/rents/new" method="get" style="margin:0;padding:0;display:inline">
 					<button  type="submit" style="float:left;"  >
@@ -68,12 +49,48 @@
       </div>
     </div>
 
-			</div>
-		</div>
-	</div>
-</div>
+  </div>	
 
- <div id="slider"></div>
+	
+</div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+<table>
+ 	  <% @items.each_with_index do |item, index | %>
+<tr>
+<td>
+
+	  <%=  raw "<div id='homepage_item' onmouseover='selectMarker(#{index});'>" %>
+	    <div id="item_search_result_picture">
+	      <%= link_to image_tag(item.photos[0].image.thumb.url), rent_path(item) %>
+	    </div>
+	   	<div id="item_search_result_owner_picture">
+	      <%= link_to image_tag(item.store.user.avatar.thumb.url), store_path(item.store) %>
+	    </div>
+	    <div id="item_search_result"> 
+		  <div id="item_search_result_details" >
+	   	    <div id="item_search_result_owner" >
+              <div id="item_search_result_text"  >
+	            <h2>  <%= link_to item.title , rent_path(item) %>  </h2>
+	            <p>Location: <%= item.location %> <br/>
+	            <% if !item.zipcode.nil? %>
+                  Zip Code:  <%= item.zipcode.name %> <br/>
+	            <% end %>
+	   	        <p>Item.Reviews</br>
+	            Item.Endorsements</p>
+	          </div>
+	        </div>
+	      </div>
+        </div>
+      </div>  
+ </td>
+ </tr>
+	  <% end %>
+</table>
+
+
+
+<div id="slider"></div>
 
 	<style>
 	#demo-frame > div.demo { padding: 10px !important;   };
@@ -243,5 +260,4 @@ div.padding2 {padding-top:50%;}
    <style type="text/css">
     #slider { margin: 10px; }
 </style>
-
 

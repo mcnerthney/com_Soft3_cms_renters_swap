@@ -1,11 +1,11 @@
 class Item 
   include Mongoid::Document
-    attr_accessible :title, :description, :active, :zipcode_name
+    attr_accessible :title, :description, :active, :location
   belongs_to :store
   field :title
   field :description
   field :active
-  field :zipcode_name
+  field :location
   
   belongs_to :zipcode, :inverse_of => nil
   embeds_many :photos  
@@ -17,12 +17,12 @@ class Item
   before_save :set_zipcode
     
   def set_zipcode
-
-      self.zipcode = Zipcode.where(name: self.zipcode_name).first
+      # TODO: regex and find zipcode from address
+      self.zipcode = Zipcode.where(name: self.location).first
        
   end
   
-  def location
+  def latlon
      set_zipcode
      if ( !self.zipcode.nil? )
        return self.zipcode.location
@@ -49,9 +49,7 @@ class Item
         result[:title]       = self.title
         result[:description] = self.description
         result[:zipname]     = self.zipcode_name
-        result[:location]    = self.location
-    
-        
+        result[:latlon]      = self.latlon
         result.to_json
     end
 end
