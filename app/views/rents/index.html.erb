@@ -4,11 +4,14 @@
 			<div class="col1">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+
  	  <% @items.each_with_index do |item, index | %>
 	  <%=  raw "<div id='homepage_item' onmouseover='selectMarker(#{index});'>" %>
 	  
 	    <div id="item_search_result_picture">
+	    	<% if !item.photos[0].nil? %>
 	      <%= link_to image_tag(item.photos[0].image.thumb.url), rent_path(item) %>
+	      <% end %>
 	    </div>
 	   	<div id="item_search_result_owner_picture">
 	      <%= link_to image_tag(item.store.user.avatar.thumb.url), store_path(item.store) %>
@@ -16,17 +19,22 @@
 	    <div id="item_search_result"> 
 		  <div id="item_search_result_details" >
                       <div id="item_search_result_price"  >
-              $50
+	            <% if !item.cost.nil? %>
+                  <%= item.cost %>
+	            <% end %>
+
            </div>
  
               <div id="item_search_result_text"  >
 	            <h2>  <%= link_to item.title , rent_path(item) %>  </h2>
 	
-	            <p>Location: <%= item.location %> <br/>
+	            <p>
 	            <% if !item.zipcode.nil? %>
                   Zip Code:  <%= item.zipcode.name %> <br/>
+                <% else %>
+                  Location: <%= item.location %> <br/>
 	            <% end %>
-	   	        <p>Item.Reviews<br/>
+	   	        </p><p>Item.Reviews<br/>
 	            Item.Endorsements</p>
 	          </div>
  
@@ -35,6 +43,7 @@
         </div>     
        </div>  
 	  <% end %>
+<%= paginate @items %>
 
 
  			</div>
@@ -112,9 +121,11 @@ div.padding2 {padding-top:50%;}
  });
 })(jQuery);
 
-    
- <%=  raw " mItems = #{@items.to_json};" %> 
-
+    mItems = [
+<% @items.each do |item | %>
+<%=  raw "#{item.to_json}," %> 
+<% end %>
+   ];
       var pinColor = "FE7569";
       var pinColorSelected = "00FE69";
       var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
@@ -130,10 +141,8 @@ div.padding2 {padding-top:50%;}
     
     function  getItemLatLon(i)
     {
-       var r1 = Math.floor(Math.random()*100);
-	   var lat = 45.60 + ( (r1-50) * 0.005);
-	   var r2 = Math.floor(Math.random()*100);
-	   var lon = -122.60 + ((r2-50) * 0.005); 
+	   var lat = mItems[i].latlon[0];
+	   var lon = mItems[i].latlon[1];
 	   return myLatlng = new google.maps.LatLng( lat, lon); 
     }
 	function markerClick( mark )
@@ -172,6 +181,8 @@ div.padding2 {padding-top:50%;}
 	            title:'title',
 	            icon: pinImageSelected });
   	   mMarkers[i].setMap(mMap);  
+  	   mMap.setCenter(latlon);
+
   	   google.maps.event.addListener(
 	       mMarkers[i], 'click', function() { markerClick(this); });
 	        	   
@@ -182,15 +193,11 @@ div.padding2 {padding-top:50%;}
 	
 	  mMarkers = new Array();
 	  var i = 0;
-	   for ( item in mItems ) {
+	   for (i = 0; i < mItems.length; i++ ) {
 	    
-         var r1 = Math.floor(Math.random()*100);
-	       var lat = 45.60 + ( (r1-50) * 0.005);
-	       var r2 = Math.floor(Math.random()*100);
-	       var lon = -122.60 + ((r2-50) * 0.005); 
-	       var myLatlng = new google.maps.LatLng( lat, lon); 
-	 
-        	mMarkers[i] = new google.maps.Marker({
+	    if ( mItems[i].latlon != null ) {
+         var myLatLng = getItemLatLon(i);
+       	mMarkers[i] = new google.maps.Marker({
          	    position: myLatlng,
 	            map: mMap,
 	            title:'title',
@@ -199,8 +206,8 @@ div.padding2 {padding-top:50%;}
 	        mMarkers[i].setMap(mMap);
 	        google.maps.event.addListener(
 	        	   mMarkers[i], 'click', function() { markerClick(this); });
-	        	   
-		      i = i + 1;
+	    }    	   
+
 	        
 	  }
 	

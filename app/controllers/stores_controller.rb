@@ -21,12 +21,19 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
-    redirect_to :action => :index
+     @store = Store.find(params[:id])
+     @items = Item.all(conditions: { store_id: @store.id } ).page(params[:page]).per(4)
+     respond_to do |format|
+       format.html 
+       # format.json { render json: @store }
+     end
+    
+
   end
 
   # GET /stores/1/edit
   def edit
-    @store = Store.find_by_id_and_user(params[:id], current_user)
+    @store = Store.find(params[:id])
   end
 
   def new
@@ -62,7 +69,7 @@ class StoresController < ApplicationController
   # PUT /stores/1
   # PUT /stores/1.json
   def update
-    @store = Store.find_by_id_and_user(params[:id], current_user)
+    @store = Store.find(params[:id])
 
     respond_to do |format|
       if @store.update_attributes(params[:store])
@@ -78,7 +85,7 @@ class StoresController < ApplicationController
   # DELETE /stores/1
   # DELETE /stores/1.json
   def destroy
-    @store = Store.find_by_id_and_user(params[:id], current_user)
+    @store = Store.find(params[:id])
     @store.deactivate
     @store.save
 

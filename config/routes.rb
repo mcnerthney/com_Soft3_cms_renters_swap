@@ -13,7 +13,7 @@ Rent::Application.routes.draw do
     end
   end
 
-  resources :stores, :only => :edit
+  resources :stores
   resources :rents
   resources :interests, :only => :new
   resources :interests, :only => :create

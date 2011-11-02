@@ -9,12 +9,16 @@ body {
 	font-size:90%;
 }
 a {
-	color:#369;
-}
-a:hover {
-	color:#fff;
-	background:#369;
+	color:black;
 	text-decoration:none;
+}
+a img {
+	color:transparent;
+}
+
+a:hover {
+	color:black;
+	text-decoration:underline;
 }
 h1, h2, h3 {
 	margin:.8em 0 .2em 0;
@@ -101,7 +105,7 @@ img {
 	position:relative;	/* This fixes the IE7 overflow hidden bug */
 	clear:both;
 	float:left;
-	width:100%;			/* width of whole page */
+	width:1000px;			/* width of whole page */
 	overflow:hidden;		/* This chops off any overhanging divs */
 }
 /* common column settings */
@@ -123,27 +127,27 @@ img {
 }
 /* 3 Column settings */
 .threecol {
-	background:#eee;		/* right column background colour */
+		/* right column background colour */
 }
 .threecol .colmid {
-	right:25%;			/* width of the right column */
-    	background:#f4f4f4;		/* center column background colour */
+	right:250px;			/* width of the right column */
+			/* center column background colour */
 }
 .threecol .colleft {
-	right:50%;			/* width of the middle column */
-	background:#eee;	/* left column background colour */
+	right:700px;			/* width of the middle column */
+	/* left column background colour */
 }
 .threecol .col1 {
-	width:46%;			/* width of center column content (column width minus padding on either side) */
-	left:102%;			/* 100% plus left padding of center column */
+	width:700px;			/* width of center column content (column width minus padding on either side) */
+	left:1000px;			/* 100% plus left padding of center column */
 }
 .threecol .col2 {
-	width:21%;			/* Width of left column content (column width minus padding on either side) */
-	left:31%;			/* width of (right column) plus (center column left and right padding) plus (left column left padding) */
+	width:0px;			/* Width of left column content (column width minus padding on either side) */
+	left:0px;			/* width of (right column) plus (center column left and right padding) plus (left column left padding) */
 }
 .threecol .col3 {
-	width:21%;			/* Width of right column content (column width minus padding on either side) */
-	left:85%;			/* Please make note of the brackets here:
+	width:210px;			/* Width of right column content (column width minus padding on either side) */
+	left:1010px;			/* Please make note of the brackets here:
 					(100% - left column width) plus (center column left and right padding) plus (left column left and right padding) plus (right column left padding) */
 }
 /* Footer styles */

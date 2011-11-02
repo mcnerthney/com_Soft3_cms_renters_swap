@@ -4,8 +4,8 @@ class RentsController < ApplicationController
   before_filter :authenticate_user! , :only => :new
   
   def index
-    
-       @items = Item.all(conditions: { active: '1' } )
+
+       @items = Item.all(conditions: { active: '1' } ).page(params[:page]).per(4)
        respond_to do |format|
          format.html # index.html.erb
          format.json { render json: @items.to_json() }

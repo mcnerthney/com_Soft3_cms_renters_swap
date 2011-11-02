@@ -1,11 +1,12 @@
 class Item 
   include Mongoid::Document
-    attr_accessible :title, :description, :active, :location
+    attr_accessible :title, :description, :active, :location, :cost
   belongs_to :store
   field :title
   field :description
-  field :active
+  field :active, type: Integer
   field :location
+  field :cost
   
   belongs_to :zipcode, :inverse_of => nil
   embeds_many :photos  
@@ -31,11 +32,11 @@ class Item
   end
   
   def deactivate 
-     self.active = false
+     self.active = 0
    end
    
    def activate 
-     self.active = true
+     self.active = 1
    end
         
    def active?
@@ -48,8 +49,9 @@ class Item
         result[:id]          = self.id
         result[:title]       = self.title
         result[:description] = self.description
-        result[:zipname]     = self.zipcode_name
         result[:latlon]      = self.latlon
+        result[:cost]       = self.cost
+     
         result.to_json
     end
 end

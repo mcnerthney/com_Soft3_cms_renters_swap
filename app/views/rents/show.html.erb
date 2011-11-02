@@ -1,3 +1,12 @@
+<div id="container">
+		<div id="side-a">
+	      <%= link_to image_tag(@item.store.user.avatar.url), store_path(@item.store) %>
+	    <br/>
+	      <br/>More Listings by <b><%= link_to "#{@item.store.name}", store_path(@item.store) %>
+	     </b><br/><br/> Reviews, <br/>Endorsements, <br/>Verifications
+		</div>
+		
+		<div id="content">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -35,3 +44,11 @@
 <% else %>
 <%= link_to 'Contact Owner', new_interest_path %>
 <% end %>
+
+		</div>
+		
+		<div id="side-b">
+			(Similar Listings)
+		</div>
+	</div>
+</div>

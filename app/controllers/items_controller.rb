@@ -43,8 +43,7 @@ class ItemsController < ApplicationController
     else
     
     @item = Item.new
-    @item.location = "Portland, OR"
-    @item.active   = true
+    @item.activate
     
     respond_to do |format|
       format.html # new.html.erb
@@ -70,7 +69,7 @@ end
     else
     
     @item = Item.new(params[:item])
-    @item.active   = true
+    @item.activate
     
     @item.store = @store
     respond_to do |format|
