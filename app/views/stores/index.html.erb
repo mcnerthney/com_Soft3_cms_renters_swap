@@ -19,8 +19,7 @@
 	<% end %>
 </td>
   <td>
-   
-    <%= image_tag(store.avatar_url) if store.avatar? %>
+  <%= render :partial => "shared/store_sidebar", :locals => { :store => store } %>
 </td>
 
     <td><%= link_to 'Show', store_path(store) %></td>

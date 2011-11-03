@@ -1,10 +1,7 @@
 <div id="container">
 		<div id="side-a">
-	      <%= link_to image_tag(@item.store.avatar.url), store_path(@item.store) %>
-	    <br/>
-	      <br/>More Listings by <b><%= link_to "#{@item.store.name}", store_path(@item.store) %>
-	     </b><br/><br/> Reviews, <br/>Endorsements, <br/>Verifications
-		</div>
+           <%= render :partial => "shared/store_sidebar", :locals => { :store => @item.store } %>
+         </div>
 		
 		<div id="content">
 <p id="notice"><%= notice %></p>
