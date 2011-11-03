@@ -51,13 +51,5 @@ module Rent
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    
-    CarrierWave.configure do |config|
-      config.grid_fs_database = 'rent_development'
-      config.grid_fs_host = 'localhost'
-      config.grid_fs_access_url =  "/images"
-      config.root = ::Rails.root.to_s + "/public"
-    end
-    
   end
 end

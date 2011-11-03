@@ -2,7 +2,8 @@ Rent::Application.routes.draw do
   devise_for :users
   root :to => "rents#index"
 
-  resources :users, :only => :show
+  resources :users
+    
   resources :stores do
     resources :items do
       resources :photos do

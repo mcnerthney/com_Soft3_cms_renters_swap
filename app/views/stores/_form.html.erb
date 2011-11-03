@@ -1,6 +1,6 @@
-<h1>Public Name of Owner</h1>
+<h1>My Store's Public Image</h1>
+<h2>Public Name of Owner</h2>
 Enter a name that identifies the owner (that's you) of the items for rent.  You may want to enter your real name, or an alias, depending upon what you want visible to the public.<p/>
-<br/>
 <%= form_for(@store) do |f| %>
   <% if @store.errors.any? %>
     <div id="error_explanation">
@@ -17,6 +17,17 @@ Enter a name that identifies the owner (that's you) of the items for rent.  You 
 
     <%= f.text_field :name %>
   </div>
+  
+  
+  <p>
+    <h2>Public Image of Owner</h2>
+    Upload a public picture that identifies your store.
+    <br/>
+    <%= image_tag(@store.avatar_url) if @store.avatar? %><br/>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+  </p>
+
 <br>
    <div class="actions">
     <%= f.submit %>

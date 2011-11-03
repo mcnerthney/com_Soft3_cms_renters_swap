@@ -1,11 +1,15 @@
 class Store 
     include Mongoid::Document
-    attr_accessible :name
+    attr_accessible :name, :avatar, :avatar_cache, :remove_avatar
     has_many :items, :dependent => :destroy
     belongs_to :user
     
     field :name
     field :active
+    field :avatar
+      
+    mount_uploader :avatar, AvatarUploader
+  
     
     def deactivate 
       self.active = false

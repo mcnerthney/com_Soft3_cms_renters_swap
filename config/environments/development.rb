@@ -34,9 +34,9 @@ Rent::Application.configure do
   config.action_mailer.smtp_settings = {
     :address              => "smtpout.secureserver.net",
     :port                 => 25,
-    :domain               => 'softllc.com',
-    :user_name            => 'dan@softllc.com',
-    :password             => 'hh',
+    :domain               => 'rentersswap.com',
+    :user_name            => 'renter@rentersswap.com',
+    :password             => 'renter',
     :authentication       => 'plain',
     :enable_starttls_auto => false  }
  

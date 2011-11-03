@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   field :name
@@ -11,9 +11,8 @@ class User
   
   has_many :stores
   
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
-  attr_accessible :avatar, :avatar_cache, :remove_avatar, :name, :email, :password, :password_confirmation, :remember_me
+  validates_uniqueness_of :email, :case_sensitive => false
+  attr_accessible :avatar, :avatar_cache, :remove_avatar, :email, :password, :remember_me
   
   
   mount_uploader :avatar, AvatarUploader

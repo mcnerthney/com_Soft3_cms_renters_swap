@@ -3,20 +3,26 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>User</th>
+    <th>Image</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @stores.each do |store| %>
-  <tr><td>
+  <tr>
+<td>
 	<% if store.active? %>
 	      <%= store.name %>
 	<% else %>
 	     <del><%= store.name %></del>
 	<% end %>
 </td>
+  <td>
+   
+    <%= image_tag(store.avatar_url) if store.avatar? %>
+</td>
+
     <td><%= link_to 'Show', store_path(store) %></td>
     <td><%= link_to 'Edit', edit_store_path(store) %></td>
   </tr>
