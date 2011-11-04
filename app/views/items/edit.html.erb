@@ -1,4 +1,12 @@
-<link href="/uploadify/uploadify.css" type="text/css" rel="stylesheet" />
+<div id="container">
+<div id="side-a">
+<%= render :partial => "shared/store_sidebar", :locals => { :store => @item.store } %>
+</div>
+
+<div id="content">
+<p id="notice"><%= notice %></p>
+
+
 <script type="text/javascript" src="/uploadify/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/uploadify/swfobject.js"></script>
 <script type="text/javascript" src="/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
@@ -13,90 +21,11 @@ $(document).ready(function() {
   });
 });
 </script>
-<h1>Edit rental</h1>
 
-<%= form_for @item, :url => store_item_path(@store,@item) do |f| %>
-<% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+<%= render  :partial => "form", :locals => { :item => @item, :iurl => store_item_path(@store,@item) } %>
 
-    <ul>
-    <% @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<div class="field">
- <%= f.label :active %>
-  <%= f.check_box :active %>
-</div>
-<div class="field">
-  <%= f.label :cost %><br />
-  <%= f.text_field :cost %>
-</div>
-<div class="field">
-  <%= f.label :location %><br />
-  <%= f.text_field :location %>
-</div>
-<div class="field">
-  <%= f.label :title %><br />
-  <%= f.text_field :title %>
-</div>
-<div class="field">
-  <%= f.label :description %><br />
-  <%= f.text_area :description, :cols => 132, :rows => 20  %>
 </div>
 
-<div class="invited">
-  <table>
-  <tr>
-  <th>Viewable Data Item:</th><th/><th>Viewable to:</th><th/>
-  </tr>
-  <tr>
-  <td>Item.Location.PinPoint</td><td>:lat, :lng</td><td>RenterSwap User</td><td>:user_id</td>
-  </tr>
-  <tr>
-  <td>Item.Location.ZipCode</td><td>:name</td><td>Everyone</td>  
-  </tr>
-  <tr>
-  <td>Item.Location.City</td><td>:name</td>  <td>All RentersSwap Users</td>
-  </tr>
- <tr>
-  <td>Item.Title</td><td>:title</td>  <td>All RentersSwap Users</td>
-  </tr>
- <tr>
-  <td>Item.Description</td><td>:description</td>  <td>All RentersSwap Users</td>
-  </tr>
- <tr>
-  <td>Owner.Address</td><td>:address</td><td>Owner Only</td>
-  </tr>
-<tr>
-  <td>Owner.Email</td><td>:address</td><td>Owner Only</td>
-  </tr>
- <tr>
-  <td>Owner.Photo</td><td>:photo</td>  <td>All RentersSwap Users</td>
-  </tr>
- <tr>
-  <td>Owner.Name</td><td>:name</td>  <td>All RentersSwap Users</td>
-  </tr>
- <tr>
-  <td>Owner.Rating</td><td>:rating</td>  <td>All RentersSwap Users</td>
-  </tr>
- <tr>
-  <td>Owner.LikeCount</td><td>:likes</td>  <td>All RentersSwap Users</td>
-  </tr>
- <tr>
-  <td>Owner.RentCount</td><td>:rent_count</td>  <td>All RentersSwap Users</td>
-  </tr>
- <tr>
-  <td>Owner.Items</td><td>:items</td>  <td>All RentersSwap Users</td>
-  </tr>
- 
+<div id="side-b">
+(Similar Listings)
 </div>
-
-<div class="actions">
-  <%= f.submit %>
-</div>
-
-<% end %>

@@ -43,6 +43,7 @@ class ItemsController < ApplicationController
     else
     
     @item = Item.new
+    @item.store = @store
     @item.activate
     
     respond_to do |format|
@@ -58,6 +59,11 @@ end
     else
     
     @item = Item.find(params[:id])
+        
+    respond_to do |format|
+       format.html
+    end
+
   end
 end
 

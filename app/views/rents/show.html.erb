@@ -12,13 +12,15 @@
 </h2>
 </p>
 
+<% if !@item.zipcode.nil? %>
+Zip Code:  <%= @item.zipcode.name %> <br/>
+<% else %>
+
+<% end %>
+
+
 <p style="white-space:pre-wrap;">
   <%= @item.description %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @item.location %>
 </p>
 
 <% if @item.photos.any? %>

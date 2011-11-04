@@ -3,6 +3,10 @@ class Zipcode
   include ApplicationHelper
   
   field :name, type: String, unique: true  
+  field :state
+  field :city
+  field :county
+    
   field :polygon, type: String  
   field :coordinate, type: String
   field :location, type: Array, default: []
@@ -77,6 +81,8 @@ class MyDocument < Nokogiri::XML::SAX::Document
   def start_document
      @depth = 0
      @save_count = 0
+     @fcount = 0
+      @in_zip = false
      puts "the document has started"
    end
   
@@ -84,13 +90,42 @@ class MyDocument < Nokogiri::XML::SAX::Document
     puts "the document has ended"
   end
 
+    #<Folder>
+    #<name>AK</name>
+    #<Folder>
+    #<name>Aleutians East County</name>
+    #<Folder>
+    #<name>Akutan</name>
+    #<Placemark>
+
   def start_element name, attributes = []
     @depth = @depth + 1
+
     #puts "#{@depth} #{name} started"
+    if ( name == "Folder" )
+        @fcount = @fcount + 1
+    end
     if ( name == "Placemark") 
       @in_zip = true
       @cord = ""
     end
+        
+    if ( @in_zip == false ) 
+        if ( name == "name" && @fcount == 1 ) 
+            puts "in State"
+            @in_statename = true
+        end
+        if ( name == "name" && @fcount == 2 ) 
+            @in_countyname = true
+        end
+        if ( name == "name" && @fcount == 3 ) 
+            @in_cityname = true
+        end
+
+    end
+
+            
+        
     if ( @in_zip == true && name == "name") 
       @in_zipname = true
     end
@@ -111,11 +146,25 @@ class MyDocument < Nokogiri::XML::SAX::Document
   
   def end_element name
       #puts "#{@depth} #{name} ended"
+      if ( name == "Folder" )
+          @fcount = @fcount - 1
+      end
+
       @depth -= 1
       if ( @in_zip == true && name == "Placemark")
         @in_zip = false
         save_zip
       end
+      if ( @in_statename == true && name == "name")
+        @in_statename = false
+      end
+      if ( @in_cityname == true && name == "name")
+          @in_cityname = false
+      end
+      if ( @in_countyname == true && name == "name")
+          @in_countyname = false
+      end
+
       if ( @in_zipname == true && name == "name")
         @in_zipname = false
       end
@@ -135,6 +184,19 @@ class MyDocument < Nokogiri::XML::SAX::Document
   end
   
   def characters str
+    if ( @in_statename == true )
+          @state_name = str
+          puts "State = #{str}"
+    end
+      if ( @in_cityname == true )
+          @city_name = str
+          #puts "City = #{str}"
+      end
+      if ( @in_countyname == true )
+          @county_name = str
+          #puts "County = #{str}"
+      end
+
     if ( @in_zipname == true )
       @zip_name = str
      #puts "zipcode = #{str}"
@@ -152,7 +214,9 @@ class MyDocument < Nokogiri::XML::SAX::Document
      if ( !@cord.empty? )
        zc = Zipcode.new
        zc.name = @zip_name
-              
+       zc.state = @state_name
+       zc.city = @city_name
+       zc.county = @county_name
        p = @zip_point.split(/,/)
        zc.coordinate = p[1].to_s + ',' + p[0].to_s
        cc  = ""
@@ -165,7 +229,7 @@ class MyDocument < Nokogiri::XML::SAX::Document
       
        zc.polygon = cc
        zc.save
-       puts "#{@save_count}"
+         #puts "#{@save_count}"
        @save_count += 1
      end
      

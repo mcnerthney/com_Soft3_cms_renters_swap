@@ -5,22 +5,22 @@ class Store
     belongs_to :user
     
     field :name
-    field :active
+    field :active, type: Integer
     field :avatar
       
     mount_uploader :avatar, AvatarUploader
   
     
     def deactivate 
-      self.active = false
+      self.active = 1
     end
     
     def activate 
-      self.active = true
+      self.active = 0
     end
          
     def active?
-      self.active
+      self.active == 1
     end
     
     def self.find_by_id_and_user(id, user)

@@ -10,7 +10,9 @@ class User
   field :avatar
   
   has_many :stores
-  
+  has_and_belongs_to_many :user_groups
+    #has_many :items, :through => :item_accesses 
+    
   validates_uniqueness_of :email, :case_sensitive => false
   attr_accessible :avatar, :avatar_cache, :remove_avatar, :email, :password, :remember_me
   

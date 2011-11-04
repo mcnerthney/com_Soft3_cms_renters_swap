@@ -1,41 +1,14 @@
-<h2>Add Rental</h2>
-<%= form_for @item, :url => store_items_path(@store) do |f| %>
-<% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-    <ul>
-    <% @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-
-<div class="field">
- <%= f.label :active %>
-  <%= f.check_box :active %>
-</div>
-<div class="field">
-  <%= f.label :cost %><br />
-  <%= f.text_field :cost %>
-</div>
-<div class="field">
-  <%= f.label :location %><br />
-  <%= f.text_field :location %>
-</div>
-<div class="field">
-  <%= f.label :title %><br />
-  <%= f.text_field :title %>
-</div>
-<div class="field">
-  <%= f.label :description %><br />
-  <%= f.text_area :description, :cols => 132, :rows => 20  %>
-</div>
-<div class="actions">
-  <%= f.submit %>
+<div id="container">
+<div id="side-a">
+<%= render :partial => "shared/store_sidebar", :locals => { :store => @item.store } %>
 </div>
 
-<% end %>
+<div id="content">
 
+<%= render  :partial => "form", :locals => { :item => @item, :iurl => new_store_item_path(@item.store) } %>
+
+</div>
+
+<div id="side-b">
+(Similar Listings)
+</div>

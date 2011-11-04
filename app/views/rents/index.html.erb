@@ -30,9 +30,9 @@
 	
 	            <p>
 	            <% if !item.zipcode.nil? %>
-                  Zip Code:  <%= item.zipcode.name %> <br/>
+                  <%= item.zipcode.city + ',' + item.zipcode.state + ' ' + item.zipcode.name %> <br/>
                 <% else %>
-                  Location: <%= item.location %> <br/>
+
 	            <% end %>
 	   	        </p><p>Item.Reviews<br/>
 	            Item.Endorsements</p>
