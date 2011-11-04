@@ -1,0 +1,8 @@
+#container
+ #side-a
+  = render :partial => "shared/store_sidebar", :locals => { :store => @item.store }
+
+#content
+ = render  :partial => "form", :locals => { :item => @item, :iurl => new_store_item_path(@item.store) }
+
+#side-b (Similar Listings)
