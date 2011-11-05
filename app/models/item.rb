@@ -8,7 +8,7 @@ class Item
   field :location
   field :cost
     
-  has_and_belongs_to_many :user_groups
+  has_and_belongs_to_many :item_user_groups
   
   belongs_to :zipcode, :inverse_of => nil
   embeds_many :photos  

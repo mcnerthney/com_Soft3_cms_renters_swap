@@ -4,6 +4,8 @@ class Store
     has_many :items, :dependent => :destroy
     belongs_to :user
     
+    has_and_belongs_to_many :store_user_groups
+    
     field :name
     field :active, type: Integer
     field :avatar
