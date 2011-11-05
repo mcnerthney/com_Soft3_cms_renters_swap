@@ -12,6 +12,14 @@ class RentsController < ApplicationController
      end
      
   end
+    
+  def search
+        @items = Item.all(conditions: { active: '1' } ).page(params[:page]).per(4)
+        respond_to do |format|
+            format.html # index.html.erb
+            format.json { render json: @items.to_json() }
+        end
+  end
   
   def new
     if @user.stores.empty?

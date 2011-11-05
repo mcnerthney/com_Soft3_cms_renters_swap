@@ -1,16 +1,10 @@
-<div id="container">
-<div id="side-a">
-<%= render :partial => "shared/store_sidebar", :locals => { :store => @item.store } %>
-</div>
+#container
+ #side-a
+  = render :partial => "shared/store_sidebar", :locals => { :store => @item.store }
 
-<div id="content">
-<p id="notice"><%= notice %></p>
+#content
+ = render :partial => "form", :locals => { :item => @item, :iurl => store_item_path(@store,@item), :iact => 'put' }
+
+#side-b (Similar Listings)
 
 
-<%= render  :partial => "form", :locals => { :item => @item, :iurl => store_item_path(@store,@item), :iact => 'put'  } %>
-
-</div>
-
-<div id="side-b">
-(Similar Listings)
-</div>

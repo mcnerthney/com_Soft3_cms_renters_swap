@@ -1,0 +1,19 @@
+.colmask.threecol
+ .colmid
+  .colleft
+   .col1
+    %p.notice 
+     =notice
+    %p.alert 
+     =alert
+    
+    = render :partial => "shared/store_search"
+
+    = paginate @items
+
+    - @items.each_with_index do |item,index| 
+     = render :partial => "shared/store_item", :locals => { :item => item, :index => index }
+
+    = paginate @items
+   .col2
+   .col3

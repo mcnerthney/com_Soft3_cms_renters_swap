@@ -15,8 +15,15 @@ Rent::Application.routes.draw do
   end
 
   resources :stores
-  resources :rents
-  resources :interests, :only => :new
+    
+  resources :rents do
+    collection do
+      get 'search'
+    end
+  end
+    
+    
+    resources :interests, :only => :new
   resources :interests, :only => :create
  
   resources :images, :only => :show
