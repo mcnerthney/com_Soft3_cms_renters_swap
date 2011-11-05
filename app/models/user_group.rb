@@ -8,15 +8,15 @@ field :all_fb_friends, Type:Boolean
 field :name, Type:String
 
 def name
-if self.everyone 
-"Everyone"
-elsif self.all_renters
-"All RentersSwappers"
-elsif self.all_fb_friends
-"Your Facebookers"
-else
-"<List Of Renters>"
-end
+  if self.everyone 
+    "Everyone"
+  elsif self.all_renters
+    "All Renters Swappers"
+  elsif self.all_fb_friends
+    "Your Facebookers"
+  else
+    "<List Of Renters>"
+  end
 end
 
 has_and_belongs_to_many :users
