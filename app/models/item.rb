@@ -18,6 +18,7 @@ class Item
   validates :description, :presence => true
     
   before_save :set_zipcode
+
     
   def set_zipcode
       # TODO: regex and find zipcode from address

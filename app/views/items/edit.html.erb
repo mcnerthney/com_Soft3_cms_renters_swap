@@ -22,7 +22,7 @@ $(document).ready(function() {
 });
 </script>
 
-<%= render  :partial => "form", :locals => { :item => @item, :iurl => store_item_path(@store,@item) } %>
+<%= render  :partial => "form", :locals => { :item => @item, :iurl => store_item_path(@store,@item), :iact => 'put'  } %>
 
 </div>
 

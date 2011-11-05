@@ -1,6 +1,6 @@
 
 
-<%= form_for item, :url => iurl do |f| %>
+<%= form_for item, :url => iurl, :method => iact do |f| %>
 <% if item.errors.any? %>
 <div id="error_explanation">
 <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -35,19 +35,16 @@
 
 
 <table>
+<tr>
 <td><b>Who can see your item</td>
-<tr>
-<td>Everyone who can visit my store</td>
 </tr>
+<% item.item_user_groups.each do |g| %>
 <tr>
-<td>All RenterSwap Users</td>
+<td>
+<%= g.name %>
+</td>
 </tr>
-<tr>
-<td>All My Facebook Friends</td>
-</tr>
-<tr>
-<td>Only these RenterSwap Users</td>
-</tr>
+<% end %>
 </table>
 
 <div class="actions">

@@ -37,21 +37,18 @@ class ItemsController < ApplicationController
   # GET /items/new
   # GET /items/new.json
   def new
-    
-    if @store.nil? || @store.user_id != current_user.id
-      redirect_to root_path
-    else
-    
+        
     @item = Item.new
     @item.store = @store
     @item.activate
+      @item.item_user_groups = [ UserGroup.everyone ]
     
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @item }
     end
+
   end
-end
   # GET /items/1/edit
   def edit
     if @store.nil? || @store.user_id != current_user.id
@@ -76,6 +73,7 @@ end
     
     @item = Item.new(params[:item])
     @item.activate
+
     
     @item.store = @store
     respond_to do |format|
