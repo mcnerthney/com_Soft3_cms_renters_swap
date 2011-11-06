@@ -6,42 +6,7 @@
       <p class="alert"><%= alert %></p>
 
  	  <% @items.each_with_index do |item, index | %>
-	  <%=  raw "<div id='homepage_item' onmouseover='selectMarker(#{index});'>" %>
-	  
-	    <div id="item_search_result_picture">
-	    	<% if !item.photos[0].nil? %>
-	      <%= link_to image_tag(item.photos[0].image.thumb.url), rent_path(item) %>
-	      <% end %>
-	    </div>
-	   	<div id="item_search_result_owner_picture">
-	      <%= link_to image_tag(item.store.avatar.thumb.url), store_path(item.store) %>
-	    </div>
-	    <div id="item_search_result"> 
-		  <div id="item_search_result_details" >
-                      <div id="item_search_result_price"  >
-	            <% if !item.cost.nil? %>
-                  <%= item.cost %>
-	            <% end %>
-
-           </div>
- 
-              <div id="item_search_result_text"  >
-	            <h2>  <%= link_to item.title , rent_path(item) %>  </h2>
-	
-	            <p>
-	            <% if !item.zipcode.nil? %>
-                  <%= item.zipcode.city + ',' + item.zipcode.state + ' ' + item.zipcode.name %> <br/>
-                <% else %>
-
-	            <% end %>
-	   	        </p><p>Item.Reviews<br/>
-	            Item.Endorsements</p>
-	          </div>
- 
-	      </div>
-	 
-        </div>     
-       </div>  
+      <%= render :partial => "shared/store_item", :locals => { :item => item, :index => index } %>
 	  <% end %>
 <%= paginate @items %>
 
