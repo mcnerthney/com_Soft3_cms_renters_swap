@@ -38,7 +38,7 @@ Zip Code:  <%= @item.zipcode.name %> <br/>
 </tr></table>
 
 
-<% if @item.store.user == @user %>
+<% if @item.store.user == current_user %>
 <%= link_to "Edit" , edit_store_item_path(@item.store,@item) %>
 <% else %>
 <%= link_to 'Contact Owner', new_interest_path %>

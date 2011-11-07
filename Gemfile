@@ -21,4 +21,6 @@ gem "therubyracer"
 gem "kaminari"
 gem "rmagick"
 gem "haml"
+gem "omniauth", "~> 0.3.2"
+gem "fb_graph"
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

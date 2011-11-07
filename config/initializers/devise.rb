@@ -1,5 +1,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
+
+
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -196,8 +198,12 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-
+    #if Rails.env.production?   
+    #config.omniauth :facebook, '248876391827927', '2389168ed3fbb8bed20f22a4a18ec625'
+    #else
+    config.omniauth :facebook, '196690723742630', '6366295f10f5ff9d51a37f9f5567b283'
+    #end
+    
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
