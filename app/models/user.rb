@@ -63,7 +63,11 @@ def set_fb_data
         self.fb_id         = me.identifier
         self.fb_avatar_url = me.picture
         self.name          = me.name
-        self.fb_friends.delete_all
+        self.fb_friends do | f |
+            f.delete
+        end
+        self.fb_friends.clear
+          
         me.friends.each do |friend|
             
             f = FbFriend.new
@@ -83,9 +87,9 @@ def set_fb_data
    self.fb_auth_token = nil
    self.fb_id = nil
    self.fb_avatar_url = nil
-   self.fb_friends.delete_all
+   self.fb_friends.delete_all!
    self.fb_updated_at = DateTime.now()
-   self.save        
+   self.save!        
 
 
 
