@@ -1,0 +1,16 @@
+- if user_signed_in? 
+  %li
+    - if current_user.fb_avatar_url != nil
+      = link_to(image_tag(current_user.fb_avatar_url) + current_user.name, edit_user_registration_path)
+
+    - else
+      = link_to('My Account', edit_user_registration_path)
+- else 
+  %li
+    = link_to('Sign up', new_user_registration_path)  
+- if user_signed_in? 
+  %li
+    = link_to('Logout', destroy_user_session_path, :method=>'delete')    
+- else 
+  %li
+    = link_to('Login', new_user_session_path) 

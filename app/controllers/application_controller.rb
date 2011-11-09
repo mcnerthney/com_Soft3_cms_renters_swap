@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
     
+    before_filter :set_fb_env
+    
+    def set_fb_env
+      if Rails.env.production?   
+        @fb_api_key = '248876391827927'
+      else
+        @fb_api_key = '196690723742630'
+      end
+    end
+
     #    def authenticate_user!
     #    if !current_user
             # This should work, but session is lost. See https://github.com/plataformatec/devise/issues/1357

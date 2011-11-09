@@ -1,7 +1,10 @@
 <div id="container">
 		<div id="side-a">
      <%= render :partial => "shared/store_sidebar", :locals => { :store => @store } %>
-		</div>		
+     <br/>
+     <div class="fb-like" data-send="true" data-layout="button_count" data-width="150" data-show-faces="true" />
+
+        </div></div>		
 		<div id="content">
  	  <% @items.each_with_index do |item, index | %>
 	  <%=  raw "<div id='homepage_item' onmouseover='selectMarker(#{index});'>" %>
@@ -39,6 +42,17 @@
        </div>  
 	  <% end %>
 <%= paginate @items %>
+
+</div>
+
+<div id="side-b">
+(Similar Listings)
+</div>
+</div>
+</div>
+<%= render :partial => "shared/fb_root" %>
+
+
 		</div>
 		
 		<div id="side-b">

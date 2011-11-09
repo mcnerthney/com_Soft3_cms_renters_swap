@@ -1,4 +1,5 @@
 module ApplicationHelper
+    
     def photo_uploadify
         # Putting the uploadify trigger script in the helper gives us
         # full access to the view and native rails objects without having

@@ -39,6 +39,8 @@ class StoresController < ApplicationController
   def new
      @store = Store.new
      @store.activate
+     @store.set_default_access
+      
      respond_to do |format|
        format.html # new.html.erb
      end

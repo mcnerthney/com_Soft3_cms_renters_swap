@@ -8,7 +8,8 @@ class Item
   field :location
   field :cost
     
-  has_and_belongs_to_many :item_user_groups
+  has_and_belongs_to_many :item_user_groups, :class_name => "UserGroup" 
+
   
   belongs_to :zipcode, :inverse_of => nil
   embeds_many :photos  
@@ -17,8 +18,12 @@ class Item
                      :length   => { :maximum => 150 }
   validates :description, :presence => true
     
-  before_save :set_zipcode
-
+  before_save   :set_zipcode
+    
+    
+  def set_default_access
+    self.item_user_groups = [ UserGroup.everyone, UserGroup.all_fb_friends ]  
+  end
     
   def set_zipcode
       # TODO: regex and find zipcode from address

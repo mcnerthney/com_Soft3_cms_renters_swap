@@ -25,22 +25,26 @@ Enter a name that identifies the owner (that's you) of the items for rent.  You 
     <br/>
     <%= image_tag(store.avatar_url) if store.avatar? %><br/>
     <%= f.file_field :avatar %>
+
+  <p>
+<label>
+<%= f.check_box :remove_avatar %>
+Remove avatar
+</label>
+</p>
     <%= f.hidden_field :avatar_cache %>
   </p>
 <table>
-<td><b>Who Can Visit Your Store</td>
 <tr>
-<td>Everyone</td>
+<td><b>Who can visit your store</td>
 </tr>
+<% store.store_user_groups.each do |g| %>
 <tr>
-<td>All RenterSwap Users</td>
+<td>
+<%= g.name %>
+</td>
 </tr>
-<tr>
-<td>All My Facebook Friends</td>
-</tr>
-<tr>
-<td>Only these RenterSwap Users</td>
-</tr>
+<% end %>
 </table>
 
 

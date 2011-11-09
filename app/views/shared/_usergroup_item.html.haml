@@ -1,0 +1,9 @@
+- if usergroup.all_fb_friends == true
+  - if user.fb_id  
+    = "All #{user.fb_friends.size} Facebook Friends"
+  - else
+    = "Facebook Friends (Signin)"
+- elsif usergroup.everyone
+  = "Everyone"
+
+

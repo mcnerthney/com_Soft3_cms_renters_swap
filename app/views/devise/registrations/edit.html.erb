@@ -6,7 +6,6 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
-
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password %></div>
 
@@ -16,6 +15,31 @@
   <div><%= f.submit "Update" %></div>
 <% end %>
 <br/>
-<%= link_to "Deactivate my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :deactivate %>.</p>
+
+<% if resource.fb_id.nil? %>
+<%= image_tag(resource.fb_avatar_url) %>  
+<%= link_to "Remove Facebook Signin", "#" %>
+<% else %>
+<%= link_to "Facebook Signin", "/users/auth/facebook" %>
+<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
+<% end %>
+<%= link_to "Deactivate", registration_path(resource_name), :confirm => "Are you sure?", :method => :deactivate %>.</p>
 
 <%= link_to "Back", :back %>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) {return;}
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+FB.getLoginStatus(function(response) {
+if (response.authResponse) {
+// logged in and connected user, someone you know
+} else {
+// no user session available, someone you dont know
+}
+});</script>

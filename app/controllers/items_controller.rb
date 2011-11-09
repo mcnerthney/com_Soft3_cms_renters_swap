@@ -41,7 +41,8 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.store = @store
     @item.activate
-      @item.item_user_groups = [ UserGroup.everyone ]
+    @item.set_default_access
+      
     
     respond_to do |format|
       format.html # new.html.erb

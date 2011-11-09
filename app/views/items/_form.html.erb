@@ -41,7 +41,7 @@
 <% item.item_user_groups.each do |g| %>
 <tr>
 <td>
-<%= g.name %>
+<%= render :partial => "shared/usergroup_item", :locals => { :usergroup => g, :user => item.store.user } %>
 </td>
 </tr>
 <% end %>

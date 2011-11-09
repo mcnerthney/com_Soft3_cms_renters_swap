@@ -11,7 +11,13 @@ class Store
     field :avatar
       
     mount_uploader :avatar, AvatarUploader
-  
+
+
+        
+    def set_default_access
+        self.store_user_groups = [ UserGroup.everyone, UserGroup.all_fb_friends ]  
+    end
+    
     
     def deactivate 
       self.active = 1

@@ -42,8 +42,10 @@ Zip Code:  <%= @item.zipcode.name %> <br/>
 <%= link_to "Edit" , edit_store_item_path(@item.store,@item) %>
 <% else %>
 <%= link_to 'Contact Owner', new_interest_path %>
+
 <% end %>
 
+<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
 		</div>
 		
 		<div id="side-b">
@@ -51,3 +53,5 @@ Zip Code:  <%= @item.zipcode.name %> <br/>
 		</div>
 	</div>
 </div>
+<%= render :partial => "shared/fb_root" %>
+
