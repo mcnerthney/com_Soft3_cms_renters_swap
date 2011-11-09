@@ -31,7 +31,7 @@ class User
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
     
-    logger.debug "Facebook User data: #{data.inspect}"
+    #logger.debug "Facebook User data: #{data.inspect}"
     
     if user = User.find_by_email(data["email"])
       user

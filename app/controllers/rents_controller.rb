@@ -67,7 +67,7 @@ def has_access(i)
   end
     
   def index
-      @items = available_for_user(current_user).page(params[:page]).per(4);  # page
+      @items = available_for_user(current_user).page(params[:page]).per(7);  # page
       # @items = Item.all(conditions: { active: '1' } ).page(params[:page]).per(4)
        respond_to do |format|
          format.html # index.html.erb
