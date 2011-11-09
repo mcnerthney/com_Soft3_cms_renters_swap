@@ -63,7 +63,7 @@ def set_fb_data
         self.fb_id         = me.identifier
         self.fb_avatar_url = me.picture
         self.name          = me.name
-        self.fb_friends do | f |
+        self.fb_friends.each do | f |
             f.delete
         end
         self.fb_friends.clear
