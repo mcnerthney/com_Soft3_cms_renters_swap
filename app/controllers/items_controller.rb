@@ -37,18 +37,15 @@ class ItemsController < ApplicationController
   # GET /items/new
   # GET /items/new.json
   def new
-        
     @item = Item.new
     @item.store = @store
     @item.activate
     @item.set_default_access
-      
-    
+    @groups = [ UserGroup::everyone, UserGroup::all_fb_friends ]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @item }
     end
-
   end
   # GET /items/1/edit
   def edit
@@ -57,6 +54,7 @@ class ItemsController < ApplicationController
     else
     
     @item = Item.find(params[:id])
+    @groups = [ UserGroup::everyone, UserGroup::all_fb_friends ]
         
     respond_to do |format|
        format.html
@@ -74,7 +72,7 @@ end
     
     @item = Item.new(params[:item])
     @item.activate
-
+    @item.item_user_groups = UserGroup.find( params[:group_ids] ) if params[:group_ids]
     
     @item.store = @store
     respond_to do |format|
@@ -98,7 +96,9 @@ end
     else
     
     @item = Item.find(params[:id])
- 
+    @item.item_user_groups.clear
+    @item.item_user_groups = UserGroup.find( params[:group_ids] ) if params[:group_ids]
+        
     respond_to do |format|
       if @item.update_attributes(params[:item])
        format.html { redirect_to store_items_path(@store), notice: 'Item was successfully updated.' }

@@ -56,7 +56,7 @@ def has_access(i)
     
   def available_for_user(tuser)
       rtn = []
-      items = Item.all
+      items = Item.all(conditions: { active: '1' } )
       items.each do | item |
         if ( has_access(item) == 1 ) 
            rtn.push(item);

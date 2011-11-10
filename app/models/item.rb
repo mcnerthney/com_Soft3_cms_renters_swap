@@ -1,6 +1,6 @@
 class Item 
   include Mongoid::Document
-    attr_accessible :title, :description, :active, :location, :cost
+    attr_accessible :title, :description, :active, :location, :cost, :item_user_groups
   belongs_to :store
   field :title
   field :description
