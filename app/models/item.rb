@@ -17,7 +17,7 @@ class Item
   validates :title,  :presence => true,
                      :length   => { :maximum => 150 }
   validates :description, :presence => true
-    
+
   before_save   :set_zipcode
     
     
