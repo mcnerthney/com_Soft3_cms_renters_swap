@@ -6,6 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_facebook_oauth(env["omniauth.auth"], current_user)
 
     if @user.persisted?
+        
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
         
       @user.fb_auth_token = env["omniauth.auth"]['credentials']['token']
@@ -18,6 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.facebook_data"] = env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
+      
   end
   
   def passthru

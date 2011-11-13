@@ -25,5 +25,56 @@ class ApplicationController < ActionController::Base
         # session[:return_to] = nil
         return_to = request.env['omniauth.origin']
         stored_location_for(resource) || return_to || root_path  
-    end   
+    end 
+    
+    
+    
+    def has_access(item)
+     i = item
+     access= 0
+    
+    
+      if user_signed_in? && 
+         ( current_user.admin? || i.store.user == current_user )
+          #logger.debug "admin or current user"
+          access = 1
+      else
+        if i.item_user_groups.where(everyone: true).first.nil?      
+    
+          if i.item_user_groups.where(all_fb_friends: true).first.nil?
+    
+           access = 0   
+              #logger.debug "no vaild user groups  #{i.store.user.email}"
+    
+          else
+           if !user_signed_in?
+               access = -1
+               #logger.debug "fb friend - without signin"
+               return
+           end
+           
+           # must be in one of the owner's fb_friends.           
+           if  current_user.fb_id.nil? 
+               #logger.debug "fb friend - without current_user.fb_id"
+           else
+             if i.store.user.fb_friends.where(fb_id: current_user.fb_id).first.nil?
+               access = 0
+                 #logger.debug "fb friend no access #{i.id}"           
+             else
+               # current user is a friend of the store's owner
+               access = 1
+               #logger.debug "fb friend access #{i.id}"
+             end
+          end
+       end
+    else
+          # everyone
+          access = 1
+            #logger.debug "everyone access #{i.id}"
+    end
+end
+access
+end
+
+
 end

@@ -1,0 +1,10 @@
+#container
+ #side-a
+  = render :partial => "shared/store_sidebar", :locals => { :store => @store }
+ #content
+  - @items.each do |item|
+   = render :partial => "shared/store_item", :locals => { :item => item }
+  = paginate @items
+ #side-b (Similar Listings)
+
+

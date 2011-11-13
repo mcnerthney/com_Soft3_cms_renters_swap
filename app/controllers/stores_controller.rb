@@ -1,6 +1,19 @@
 class StoresController < ApplicationController
   
-    before_filter :authenticate_user!
+    before_filter :authenticate_user!,:except => [:show, :index]
+
+    
+    def available_for_user(store)
+        rtn = []
+        items = store.items.where(active: '1')
+        items.each do | item |
+            if ( has_access(item) == 1 ) 
+                rtn.push(item);
+            end
+        end
+        Kaminari.paginate_array(rtn)
+        
+    end
 
   
   # GET /stores
@@ -22,7 +35,7 @@ class StoresController < ApplicationController
   # GET /stores/1.json
   def show
      @store = Store.find(params[:id])
-     @items = Item.all(conditions: { store_id: @store.id } ).page(params[:page]).per(4)
+     @items = available_for_user(@store).page(params[:page]).per(7); 
      respond_to do |format|
        format.html 
        # format.json { render json: @store }
@@ -33,7 +46,14 @@ class StoresController < ApplicationController
 
   # GET /stores/1/edit
   def edit
-    @store = Store.find(params[:id])
+      @store = Store.find(params[:id])
+      if ( @store.user != current_user )
+          redirect_to root_path
+      else
+          respond_to do |format|
+              format.html # edit.html.erb 
+          end
+      end
   end
 
   def new

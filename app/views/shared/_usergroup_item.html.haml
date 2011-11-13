@@ -1,8 +1,10 @@
 - if usergroup.all_fb_friends == true
   - if user.fb_id  
-    = "All #{user.fb_friends.size} Facebook Friends"
+    -# = "All #{user.fb_friends.size} Facebook Friends"
+    = "Facebook Friends"
   - else
-    = "Facebook Friends (Signin)"
+    = "Facebook Friends "
+    = link_to "(Log In)", "/users/auth/facebook"
 - elsif usergroup.everyone
   = "Everyone"
 

@@ -12,6 +12,8 @@ class User
   field :fb_auth_token, type:String
   field :fb_id , type:String
   field :fb_avatar_url, type:String
+  field :fb_name, type:String
+    
     
   field :fb_updated_at, type: DateTime
     
@@ -44,7 +46,7 @@ class User
   def self.new_with_session(params, session)
    super.tap do |user|
     if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
-        user.email = data["email"]        
+        user.email   = data["email"]         
     end
    end
   end
@@ -62,7 +64,7 @@ def set_fb_data
         
         self.fb_id         = me.identifier
         self.fb_avatar_url = me.picture
-        self.name          = me.name
+        self.fb_name        = me.name
         self.fb_friends.each do | f |
             f.delete
         end

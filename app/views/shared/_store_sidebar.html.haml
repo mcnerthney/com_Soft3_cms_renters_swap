@@ -1,17 +1,21 @@
 
 #store_side_bar_owner_picture
-%br/
-= store.name
+ %br/
+ - if store.user.fb_name? && store.use_fb_name?
+  = link_to store.user.fb_name, store_path(store)
+ - else
+  = link_to store.name, store_path(store)
 
-- if store.avatar?  
-  = link_to image_tag(store.avatar.url), store_path(store)
-- else
-  - if ( store.user.fb_avatar_url?  ) 
-    = link_to image_tag(store.user.fb_avatar_url + '?type=large'), store_path(store)
+ - if ( store.use_fb_avatar? && store.user.fb_avatar_url?  ) 
+  = link_to image_tag(store.user.fb_avatar_url + '?type=large'), store_path(store)
+ - else
+  - if store.avatar?  
+   = link_to image_tag(store.avatar.url), store_path(store)
+
 %br/
 
 - if store.user == current_user
-  = link_to "Change image or name", edit_store_path(store)
+ = link_to "Change image or name", edit_store_path(store)
 
 %br/
 Reviews, <br/>Endorsements, <br/>Verifications

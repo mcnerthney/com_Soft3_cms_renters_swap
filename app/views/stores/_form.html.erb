@@ -1,6 +1,6 @@
-<h1>My Store's Public Image</h1>
-<h2>Public Name of Owner</h2>
-Enter a name that identifies the owner (that's you) of the items for rent.  You may want to enter your real name, or an alias, depending upon what you want visible to the public.<p/>
+<h1>Public Information</h1>
+<h2>Public Name</h2>
+Enter a name that identifies you. You may want to enter your real name, or an alias, depending upon what you want visible to the public.<p/>
 <%= form_for(store) do |f| %>
   <% if store.errors.any? %>
     <div id="error_explanation">
@@ -17,11 +17,18 @@ Enter a name that identifies the owner (that's you) of the items for rent.  You 
 
     <%= f.text_field :name %>
   </div>
+<p>
+<label>
+<%= f.check_box :use_fb_name %>
+Use Facebook Name
+</label>
+</p>
+
   
   
   <p>
-    <h2>Public Image of Owner</h2>
-    Upload a public picture that identifies your store.
+    <h2>Public Image</h2>
+    Upload a public picture that identifies you.
     <br/>
     <%= image_tag(store.avatar_url) if store.avatar? %><br/>
     <%= f.file_field :avatar %>
@@ -34,9 +41,19 @@ Remove avatar
 </p>
     <%= f.hidden_field :avatar_cache %>
   </p>
+
+
+<p>
+<label>
+<%= f.check_box :use_fb_avatar %>
+Use Facebook Profile Picture
+</label>
+</p>
+
+
 <table>
 <tr>
-<td><b>Who can visit your store</td>
+<td><b>Who can see your profile</td>
 </tr>
 <% store.store_user_groups.each do |g| %>
 <tr>

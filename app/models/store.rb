@@ -1,6 +1,6 @@
 class Store 
     include Mongoid::Document
-    attr_accessible :name, :avatar, :avatar_cache, :remove_avatar
+    attr_accessible :name, :use_fb_avatar, :use_fb_name, :avatar, :avatar_cache, :remove_avatar
     has_many :items, :dependent => :destroy
     belongs_to :user
     
@@ -9,7 +9,9 @@ class Store
     field :name
     field :active, type: Integer
     field :avatar
-      
+    field :use_fb_avatar, type: Boolean 
+    field :use_fb_name,   type: Boolean 
+    
     mount_uploader :avatar, AvatarUploader
 
 
