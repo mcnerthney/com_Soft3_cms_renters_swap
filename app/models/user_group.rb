@@ -4,21 +4,21 @@ include Mongoid::Document
 
 field :everyone, Type:Boolean
 field :all_fb_friends, Type:Boolean
-field :name, Type:String
+field :fb_friend_list, Type:Boolean
 
-    
-    
+
+
 def name
   if self.everyone 
     "Everyone"
   elsif self.all_fb_friends
     s = "Your Facebook Friends"
+  elsif self.fb_friend_list
+    s = "Facebook List"
   else
-    "<List Of Renters>"
+    s = "Renters List"
   end
 end
-
-has_and_belongs_to_many :users
 
 def self.everyone
   UserGroup.find_or_create_by(everyone: true)

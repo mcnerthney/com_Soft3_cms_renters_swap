@@ -18,10 +18,11 @@ class User
   field :fb_updated_at, type: DateTime
     
   embeds_many :fb_friends
-  
+  embeds_many :fb_friend_lists 
+   
   has_many :stores
     
-  has_and_belongs_to_many :user_groups
+  has_many :user_groups
     
   validates_uniqueness_of :email, :case_sensitive => false
   attr_accessible :avatar, :avatar_cache, :remove_avatar, :email, :password, :remember_me
