@@ -1,0 +1,66 @@
+!!!
+%html
+  %head
+    %title
+      Renters Swap
+    = stylesheet_link_tag    "style"
+    = javascript_include_tag "application"
+    %link{:href => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css", :rel => "stylesheet" , :type => "text/css"}
+    %script{ :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" }
+    = csrf_meta_tags
+:javascript
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24711459-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+%div#fb-root
+:javascript
+  window.fbAsyncInit = function() {
+  FB.init({
+  appId      : '196690723742630', // App ID
+  channelURL : '//WWW.rentersswap.com/channel.html', // Channel File
+  status     : true, // check login status
+  cookie     : true, // enable cookies to allow the server to access the session
+  oauth      : true, // enable OAuth 2.0
+  xfbml      : true  // parse XFBML
+  });
+
+  // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+  var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+  js = d.createElement('script'); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js";
+  d.getElementsByTagName('head')[0].appendChild(js);
+  }(document));
+
+%body
+  %div#wt
+    %div#header
+      %div{:style => "padding:10px;"}
+      = link_to image_tag('logo.png', :border => "none"), root_path
+      %div{:style => "width: 175px; float:right;"}
+        %div#signup
+          = render 'shared/navigation'
+        %div{:style => "padding: 27px;"}
+        %div#rent_list{}
+          %a{:href => '#'}
+      %div#menu_wrapper
+        = render 'shared/menu'
+    -#%div#left-sidebar
+    %div#content
+      = yield
+  %div{:style => "padding:10px;"}
+  %div#footer
+    %div#wfs
+
+
