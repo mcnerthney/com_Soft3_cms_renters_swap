@@ -1,0 +1,176 @@
+$blue: #3bbfce;
+$header-width: 100%;
+
+ body{
+  margin: 0;
+  padding: 190px 0 0 220px;
+ }
+
+/*           header           */
+div#wt {
+  height: 176px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: $header-width;
+  background: url("header.png");
+}
+
+
+div#wt #header{
+ margin: 0 auto;
+ position: relative;
+ width: 1015px;
+}
+
+
+#signup li {
+   float:left;
+   list-style-type:none;
+   margin:5px;
+}
+
+#signup li a {
+  color:white;
+}
+
+#rent_list{
+ background: url("list-rental.png") no-repeat;
+ width: 120px;
+ height:33px;
+ margin-left: -66px;
+}
+#rent_list a{
+  text-indent: -9999px;
+}
+
+/*         menu          */
+#menu_wrapper div {
+    float: left;
+    height: 44px;
+    width: 12px;
+}
+#menu_wrapper ul {
+    margin-left: 12px;
+}
+#menu {
+    font-family: Arial,sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    height: 40px;
+    list-style-type: none;
+    margin: 50px 0;
+    padding: 0;
+}
+#menu li {
+    float: left;
+    margin: 0;
+}
+
+#menu li#dashboard a {
+    background: url("dashboard.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 126px;
+    text-indent: -9999px;
+}
+
+#menu li#inbox a {
+    background: url("inbox.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 92px;
+    text-indent: -9999px;
+}
+#menu li#your-rentals a {
+    background: url("your-rentals.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 158px;
+    text-indent: -9999px;
+}
+#menu li#account a {
+    background: url("account.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 100px;
+    text-indent: -9999px;
+}
+#menu li#profile a {
+    background: url("profile.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 100px;
+    text-indent: -9999px;
+}
+#menu li#find-rental a {
+    background: url("find-rental.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 141px;
+    text-indent: -9999px;
+}
+
+
+
+
+/*           left-side bar               */
+div#left-sidebar {
+    position: fixed !important;
+}
+
+div#left-sidebar {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 200px;
+    width: 150px;
+}
+div#left-sidebar {
+    background: gray;
+    color: black;
+}
+
+
+#content {
+ margin: 0 auto;
+ position: relative;
+ width: 1015px;
+}
+
+
+
+ /*         footer                 */
+ div#footer {
+    background: url("header.png");
+    bottom: 0;
+    height: 100px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    overflow:hidden;
+}
+
+ @media screen{
+  div#header{
+   position:fixed;
+  }
+
+ div#footer{
+   position:fixed;
+   }
+ }
+
+
