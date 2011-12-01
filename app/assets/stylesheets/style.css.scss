@@ -73,7 +73,17 @@ div#wt #header{
     line-height: 46px;
     padding: 0 20px;
     text-decoration: none;
-    width: 126px;
+    width: 125px;
+    text-indent: -9999px;
+}
+
+#menu li#dashboard a:hover {
+    background: url("dashboard_selected.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 125px;
     text-indent: -9999px;
 }
 
@@ -83,16 +93,36 @@ div#wt #header{
     line-height: 46px;
     padding: 0 20px;
     text-decoration: none;
-    width: 92px;
+    width: 91px;
     text-indent: -9999px;
 }
+#menu li#inbox a:hover {
+    background: url("inbox_selected.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 91px;
+    text-indent: -9999px;
+}
+
 #menu li#your-rentals a {
     background: url("your-rentals.png") repeat-x scroll 0 0 transparent;
     display: block;
     line-height: 46px;
     padding: 0 20px;
     text-decoration: none;
-    width: 158px;
+    width: 157px;
+    text-indent: -9999px;
+}
+
+#menu li#your-rentals a:hover {
+    background: url("your-rentals_selected.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 157px;
     text-indent: -9999px;
 }
 #menu li#account a {
@@ -101,7 +131,16 @@ div#wt #header{
     line-height: 46px;
     padding: 0 20px;
     text-decoration: none;
-    width: 100px;
+    width: 99px;
+    text-indent: -9999px;
+}
+#menu li#account a:hover {
+    background: url("account_selected.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 99px;
     text-indent: -9999px;
 }
 #menu li#profile a {
@@ -110,7 +149,16 @@ div#wt #header{
     line-height: 46px;
     padding: 0 20px;
     text-decoration: none;
-    width: 100px;
+    width: 99px;
+    text-indent: -9999px;
+}
+#menu li#profile a:hover {
+    background: url("profile_selected.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 99px;
     text-indent: -9999px;
 }
 #menu li#find-rental a {
@@ -119,10 +167,18 @@ div#wt #header{
     line-height: 46px;
     padding: 0 20px;
     text-decoration: none;
-    width: 141px;
+    width: 140px;
     text-indent: -9999px;
 }
-
+#menu li#find-rental a:hover {
+    background: url("find-rental_selected.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    line-height: 46px;
+    padding: 0 20px;
+    text-decoration: none;
+    width: 140px;
+    text-indent: -9999px;
+}
 
 
 
@@ -170,6 +226,19 @@ div#left-sidebar {
 
  div#footer{
    position:fixed;
+   }
+   .fmenu{
+    margin: 0 auto;
+    position: relative;
+    width: 1015px;
+   }
+   .fmenu li{
+    margin-left:50px;
+    float: left;
+    list-style: none outside none;
+   }
+   .fmenu li a{
+     color: #fff;
    }
  }
 
