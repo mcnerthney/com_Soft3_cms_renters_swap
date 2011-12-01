@@ -242,4 +242,18 @@ div#left-sidebar {
    }
  }
 
+/* ***********************************************************    */
+$black: #F8F8F8;
+div#login_box{
+ background: #F8F8F8;
+ -moz-border-radius: 10px;
+ width:500px;
+ margin-left:246px;
+   div#login_header{
+    background: #B8B8B8;
+    height:40px;
+    -moz-border-radius-topright:10px;
+    -moz-border-radius-topleft:10px;
+   }
 
+}
