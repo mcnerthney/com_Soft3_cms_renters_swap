@@ -57,8 +57,9 @@
       %div#menu_wrapper
         = render 'shared/menu'
     -#%div#left-sidebar
-    %div#content
-      = yield
+    %div#container
+      %div#content
+        = yield
   %div{:style => "padding:10px;"}
   %div#footer
     %div{:style => "padding:20px;"}
