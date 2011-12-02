@@ -1,3 +1,4 @@
+<div style="padding:45px;"></div>
 <div id="login_box">
   <div id="login_header">
       <h2>Sign up</h2>
@@ -7,15 +8,17 @@
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <div><%= f.label :email %><br />
+      <div class="label"><%= f.label :email %><br />
       <%= f.email_field :email %></div>
 
-      <div><%= f.label :password %><br />
+      <div class="label"><%= f.label :password %><br />
       <%= f.password_field :password %></div>
 
-      <div><%= f.submit "Sign up" %></div>
+      <div class="label"><%= f.submit "Sign up" %></div>
     <% end %>
 
-    <%= render :partial => "devise/shared/links" %>
+    <div class="label">
+       <%= render :partial => "devise/shared/links" %>
+    </div>
 
 </div>
