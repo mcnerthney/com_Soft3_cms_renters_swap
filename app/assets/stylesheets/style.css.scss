@@ -272,3 +272,15 @@ div#login_box{
       padding: 10px;
   }
 }
+
+
+form input {
+    -moz-border-radius: 3px 3px 3px 3px;
+    border: 1px solid #BBBBBB;
+    color: #333333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    outline: medium none;
+    padding: 7px;
+    vertical-align: middle;
+}
