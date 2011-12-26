@@ -32,7 +32,7 @@ class User
     
     
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-    data = access_token['extra']['user_hash']
+    data = access_token['info']
     
     #logger.debug "Facebook User data: #{data.inspect}"
     
@@ -44,19 +44,11 @@ class User
     end
   end
 
-  def self.new_with_session(params, session)
-   super.tap do |user|
-    if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
-        user.email   = data["email"]         
-    end
-   end
-  end
-
   def self.find_by_email(params)
     User.where(email: params).first
   end
 
-def set_fb_data
+  def set_fb_data
  
     if  self.fb_auth_token != nil? 
       begin         

@@ -15,13 +15,16 @@ gem "capybara", ">= 1.1.1", :group => :test
 gem "launchy", ">= 2.0.5", :group => :test
 gem "bson_ext", ">= 1.3.1"
 gem "mongoid", ">= 2.3.0"
-gem "devise", ">= 1.4.7"
+gem "devise"
 gem "nokogiri"
 gem "therubyracer"
 gem "kaminari"
 gem "rmagick"
 gem "mongoid_acts_as_tree"
 gem "haml"
-gem "omniauth", "~> 0.3.2"
+gem "omniauth"
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
 gem "fb_graph"
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
