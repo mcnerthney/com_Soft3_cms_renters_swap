@@ -219,11 +219,11 @@ div#left-sidebar {
  /*         footer                 */
  div#footer {
     background: url("header.png");
-    bottom: 0;
+    margin: 0 auto;
+    position: relative;
+    width: 971px;
     height: 100px;
     left: 0;
-    position: absolute;
-    width: 100%;
     overflow:hidden;
 }
 
@@ -233,10 +233,11 @@ div#left-sidebar {
   }
 
  div#footer{
-   position:fixed;
+
    }
    .fmenu{
     margin: 0 auto;
+    top: 50px;
     position: relative;
     width: 1015px;
    }
