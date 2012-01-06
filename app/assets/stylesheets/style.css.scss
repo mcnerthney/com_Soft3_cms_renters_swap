@@ -7,7 +7,7 @@ $header-width: 100%;
  }
 
 /*           header           */
-div#wt {
+#top {
   height: 176px;
   left: 0;
   position: absolute;
@@ -17,32 +17,35 @@ div#wt {
 }
 
 
-div#wt #header{
+#top #header{
  margin: 0 auto;
  position: relative;
  width: 971px;
+ padding: 15px;
+}
+
+#top #nav {
+ float:right;
+ 
 }
 
 
-#signup li {
+#nav_list li {
    float:left;
    list-style-type:none;
    margin:5px;
+    
 }
 
-#signup li a {
+#nav_list li a {
   color:white;
+
 }
 
-#rent_list{
- background: url("list-rental.png") no-repeat;
- width: 120px;
- height:33px;
- margin-left: -66px;
+#nav_list li a img {
+  vertical-align:text-top;
 }
-#rent_list a{
-  text-indent: -9999px;
-}
+
 
 /*         menu          */
 #menu_wrapper div {

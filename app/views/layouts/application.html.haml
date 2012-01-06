@@ -44,14 +44,11 @@
   }(document));
 
 %body
-  %div#wt
-    %div#header
-      %div{:style => "padding:15px;"}
+  #top
+    #header
       = link_to image_tag('logo.png', :border => "none"), root_path
-      %div{:style => "width: 175px; float:right;"}
-        %div#signup
-          = render 'shared/navigation'
-        %div{:style => "padding: 27px;"}
+      #nav
+        = render 'shared/navigation'
         %div#rent_list{}
           %a{:href => '#'}
       %div#menu_wrapper
