@@ -6,7 +6,6 @@ $header-width: 100%;
   padding: 170px 0 0 200px;
  }
 
-/*           header           */
 #top {
   height: 60px;
   left: 0;
@@ -22,34 +21,36 @@ $header-width: 100%;
  position: relative;
  width: 971px;
 }
-
-#top #header a img {
-   margin-top: 12px;
+#top a img {
+  margin-top: 8px;
+  margin-right: 8px;
 }
+
+
 #top #nav {
- float:right;
- 
+ float:right; 
 }
-
 
 #nav_list li {
    float:left;
    list-style-type:none;
    margin:5px;
+   margin-top: 20px;
 }
 
 #nav_list li a {
   color:white;
+  text-decoration:none
 }
 
 #nav_list li a img {
   vertical-align:text-top;
   height:30px;
   width:30px;
+  margin-top: -8px;
+  margin-right: 8px;
 }
 
-
-/*         menu          */
 #menu_wrapper div {
     float: left;
     height: 44px;
