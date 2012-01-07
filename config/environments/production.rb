@@ -58,14 +58,14 @@ Rent::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
     
-   config.action_mailer.default_url_options = { :host => 'www.rentersswap.com' }
+   config.action_mailer.default_url_options = { :host => 'www.rentswap.org' }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-        :address              => "smtpout.secureserver.net",
-        :port                 => 25,
-        :domain               => 'rentersswap.com',
-        :user_name            => 'renter@rentersswap.com',
-        :password             => 'renter',
+        :address              => "host284.hostmonster.com",
+        :port                 => 26,
+        :domain               => 'www.rentswap.org',
+        :user_name            => 'org_rentswap_smtp@soft3.org',
+        :password             => 'ViEw3or9Jt4f150QklB3Jja5rzN1aVqNBcZVvggFkm2JcbqAQOYPuVYj',
         :authentication       => 'plain',
         :enable_starttls_auto => false  }
     

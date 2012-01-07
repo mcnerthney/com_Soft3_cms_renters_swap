@@ -30,14 +30,16 @@ Rent::Application.configure do
   
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "smtpout.secureserver.net",
-    :port                 => 25,
-    :domain               => 'rentersswap.com',
-    :user_name            => 'renter@rentersswap.com',
-    :password             => 'renter',
-    :authentication       => 'plain',
-    :enable_starttls_auto => false  }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        :address              => "host284.hostmonster.com",
+        :port                 => 26,
+        :domain               => 'www.rentswap.org',
+        :user_name            => 'org_rentswap_smtp@soft3.org',
+        :password             => 'ViEw3or9Jt4f150QklB3Jja5rzN1aVqNBcZVvggFkm2JcbqAQOYPuVYj',
+        :authentication       => 'plain',
+        :enable_starttls_auto => false  }
+    
+
  
 end
