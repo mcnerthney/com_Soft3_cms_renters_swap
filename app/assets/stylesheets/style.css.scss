@@ -3,12 +3,12 @@ $header-width: 100%;
 
  body{
   margin: 0;
-  padding: 190px 0 0 220px;
+  padding: 170px 0 0 200px;
  }
 
 /*           header           */
 #top {
-  height: 176px;
+  height: 60px;
   left: 0;
   position: absolute;
   top: 0;
@@ -21,9 +21,11 @@ $header-width: 100%;
  margin: 0 auto;
  position: relative;
  width: 971px;
- padding: 15px;
 }
 
+#top #header a img {
+   margin-top: 12px;
+}
 #top #nav {
  float:right;
  
@@ -34,16 +36,16 @@ $header-width: 100%;
    float:left;
    list-style-type:none;
    margin:5px;
-    
 }
 
 #nav_list li a {
   color:white;
-
 }
 
 #nav_list li a img {
   vertical-align:text-top;
+  height:30px;
+  width:30px;
 }
 
 
@@ -60,9 +62,8 @@ $header-width: 100%;
     font-family: Arial,sans-serif;
     font-size: 13px;
     font-weight: bold;
-    height: 40px;
+    height: 50px;
     list-style-type: none;
-    margin: 50px 0;
     padding: 0;
 }
 #menu li {
