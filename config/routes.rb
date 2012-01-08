@@ -5,6 +5,12 @@ Rent::Application.routes.draw do
   devise_for :users,  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
     
   root :to => "rents#index"
+  
+  match '/contact', :to => 'pages#contact'
+  match '/about',   :to => 'pages#about'
+  match '/safety',  :to => 'pages#safety'
+  match '/terms',   :to => 'pages#terms'
+  match '/help',    :to => 'pages#help'
 
   resources :stores do
     resources :items do
