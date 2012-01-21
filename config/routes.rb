@@ -11,7 +11,15 @@ Rent::Application.routes.draw do
   match '/safety',  :to => 'pages#safety'
   match '/terms',   :to => 'pages#terms'
   match '/help',    :to => 'pages#help'
+  match '/dashboard',    :to => 'pages#dashboard'
+  match '/inbox',    :to => 'pages#inbox'
+  match '/profile',    :to => 'pages#profile'
+  match '/account',    :to => 'pages#account'
+  match '/find',    :to => 'pages#find'
+  match '/rentals',    :to => 'pages#rentals'
+  # match '/account',    :to => 'pages#account'
 
+              
   resources :stores do
     resources :items do
       resources :photos do
@@ -31,7 +39,7 @@ Rent::Application.routes.draw do
   end
     
     
-    resources :interests, :only => :new
+  resources :interests, :only => :new
   resources :interests, :only => :create
  
   resources :images, :only => :show

@@ -1,4 +1,5 @@
 $blue: #3bbfce;
+$text_color: rgb(137,89,39);
 $header-width: 100%;
 
  body{
@@ -12,7 +13,6 @@ $header-width: 100%;
   position: absolute;
   top: 0;
   width: $header-width;
-  background: url("header.png");
 }
 
 
@@ -35,12 +35,12 @@ $header-width: 100%;
    float:left;
    list-style-type:none;
    margin:5px;
-   margin-top: 20px;
+   margin-top: 130px;
 }
 
 #nav_list li a {
-  color:white;
-  text-decoration:none
+  color:$text_color;
+  text-decoration:none;
 }
 
 #nav_list li a img {
@@ -51,140 +51,38 @@ $header-width: 100%;
   margin-right: 8px;
 }
 
-#menu_wrapper div {
-    float: left;
-    height: 44px;
-    width: 12px;
-}
-#menu_wrapper ul {
-    margin-left: 12px;
-}
-#menu {
-    font-family: Arial,sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    height: 50px;
-    list-style-type: none;
-    padding: 0;
-}
-#menu li {
-    float: left;
-    margin: 0;
+
+#navlist{
+  left: 0;
+  position: absolute;
+  top: 150px;
+  height: 160px;
+  width: $header-width;
+  background: url("nav_bar.png") 0 -170px;
 }
 
-#menu li#dashboard a {
-    background: url("dashboard.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 125px;
-    text-indent: -9999px;
+#navlist {
+list-style-type:none;
+margin:0;
+padding:0;
+top:160px;
+overflow:hidden;
 }
 
-#menu li#dashboard a:hover {
-    background: url("dashboard_selected.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 125px;
-    text-indent: -9999px;
-}
+#navlist li{float:left;list-style:none;top:0;overflow:hidden;}
+#navlist li, #navlist a{display:block;height:50px;    text-indent: -9999px;}
 
-#menu li#inbox a {
-    background: url("inbox.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 91px;
-    text-indent: -9999px;
-}
-#menu li#inbox a:hover {
-    background: url("inbox_selected.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 91px;
-    text-indent: -9999px;
-}
+#find{margin-left:61px;left:0px;width:190px}
+#find{background:url('nav_bar.png') -61px -170px;}
+#find a:hover{background: url('nav_bar.png') -61px -399px;}
 
-#menu li#your-rentals a {
-    background: url("your-rentals.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 157px;
-    text-indent: -9999px;
-}
+#list{margin-left:5px;left:0px;width:190px}
+#list{background:url('nav_bar.png') -254px -170px;}
+#list a:hover{background: url('nav_bar.png') -254px -399px;}
 
-#menu li#your-rentals a:hover {
-    background: url("your-rentals_selected.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 157px;
-    text-indent: -9999px;
-}
-#menu li#account a {
-    background: url("account.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 99px;
-    text-indent: -9999px;
-}
-#menu li#account a:hover {
-    background: url("account_selected.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 99px;
-    text-indent: -9999px;
-}
-#menu li#profile a {
-    background: url("profile.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 99px;
-    text-indent: -9999px;
-}
-#menu li#profile a:hover {
-    background: url("profile_selected.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 99px;
-    text-indent: -9999px;
-}
-#menu li#find-rental a {
-    background: url("find-rental.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 140px;
-    text-indent: -9999px;
-}
-#menu li#find-rental a:hover {
-    background: url("find-rental_selected.png") repeat-x scroll 0 0 transparent;
-    display: block;
-    line-height: 46px;
-    padding: 0 20px;
-    text-decoration: none;
-    width: 140px;
-    text-indent: -9999px;
-}
-
+#how{margin-left:5px;left:0px;width:190px}
+#how{background:url('nav_bar.png') -449px -170px;}
+#how a:hover{background: url('nav_bar.png') -449px -399px;}
 
 
 /*           left-side bar               */
@@ -209,9 +107,7 @@ div#left-sidebar {
  margin: 0 auto;
  position: relative;
  width: 971px;
- min-height:700px;
- background: #f2f2f2;
- top: -24%;
+ top: 200px;
  width:954px;
  #content{
   padding:10px;
@@ -223,11 +119,12 @@ div#left-sidebar {
 
  /*         footer                 */
  div#footer {
-    background: url("header.png");
+    background: url("footer.png");
+    background-repeat:no-repeat;
     margin: 0 auto;
     position: relative;
     width: 971px;
-    height: 100px;
+    height: 150px;
     left: 0;
     overflow:hidden;
 }
@@ -242,9 +139,9 @@ div#left-sidebar {
    }
    .fmenu{
     margin: 0 auto;
-    top: 50px;
     position: relative;
     width: 1015px;
+    margin-top: 100px;
    }
    .fmenu li{
     margin-left:50px;
@@ -252,7 +149,7 @@ div#left-sidebar {
     list-style: none outside none;
    }
    .fmenu li a{
-     color: #fff;
+     color: $text_color;
    }
  }
 
@@ -295,3 +192,95 @@ form input {
     padding: 7px;
     vertical-align: middle;
 }
+
+
+/* column container */
+.colmask {
+	position:relative;	/* This fixes the IE7 overflow hidden bug */
+	clear:both;
+	float:left;
+	width:1000px;			/* width of whole page */
+	overflow:hidden;		/* This chops off any overhanging divs */
+}
+/* common column settings */
+.colright,
+.colmid,
+.colleft {
+	float:left;
+	width:100%;			/* width of page */
+	position:relative;
+}
+.col1,
+.col2,
+.col3 {
+	float:left;
+	position:relative;
+	padding:0 0 1em 0;	/* no left and right padding on columns, we just make them narrower instead 
+					only padding top and bottom is included here, make it whatever value you need */
+	overflow:hidden;
+}
+/* 3 Column settings */
+.threecol {
+		/* right column background colour */
+}
+.threecol .colmid {
+	right:250px;			/* width of the right column */
+			/* center column background colour */
+}
+.threecol .colleft {
+	right:700px;			/* width of the middle column */
+	/* left column background colour */
+}
+.threecol .col1 {
+	width:700px;			/* width of center column content (column width minus padding on either side) */
+	left:1000px;			/* 100% plus left padding of center column */
+}
+.threecol .col2 {
+	width:0px;			/* Width of left column content (column width minus padding on either side) */
+	left:0px;			/* width of (right column) plus (center column left and right padding) plus (left column left padding) */
+}
+.threecol .col3 {
+	width:210px;			/* Width of right column content (column width minus padding on either side) */
+	left:1010px;			/* Please make note of the brackets here:
+					(100% - left column width) plus (center column left and right padding) plus (left column left and right padding) plus (right column left padding) */
+}
+
+
+#item_result{ 
+  clear:both;
+  top: 0px;
+  width:465px;
+  display: inline; 
+ }
+ 
+#item_result_picture{
+  clear:both;
+  width:100px;
+  display: inline; 
+  margin-left:10px;
+ }
+#item_result_details{
+  float:right;
+  position:relative;
+  width:460px;
+  font-size:110%;
+ }
+ #item_result_text{
+  display: inline; 
+   position:relative;
+   padding: 0px 0px 0px 0px;
+ }
+
+#item_result_owner_picture {
+  position:absolute;
+  display: inline; 
+  padding: 0px 0px 0px 3px;
+
+}
+
+#item_result_price{
+  float:right;
+  font-size:150%;
+text-align: right;
+    padding: 15px 15px 5px 5px;
+ }

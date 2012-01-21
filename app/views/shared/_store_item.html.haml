@@ -1,19 +1,19 @@
 #homepage_item
- #item_search_result_picture
+ #item_result_picture
   - if !item.photos[0].nil?
    = link_to image_tag(item.photos[0].image.thumb.url), rent_path(item)
- #item_search_result_owner_picture
+ #item_result_owner_picture
   - if ( item.store.use_fb_avatar? && item.store.user.fb_avatar_url?  ) 
    = link_to image_tag(item.store.user.fb_avatar_url), store_path(item.store)
   - else
    - if item.store.avatar?  
     = link_to image_tag(item.store.avatar.thumb.url), store_path(item.store)
- #item_search_result
-  #item_search_result_details
-   #item_search_result_price
+ #item_result
+  #item_result_details
+   #item_result_price
     - if !item.cost.nil?
      = item.cost
-   #item_search_result_text
+   #item_result_text
     %h2
      = link_to item.title , rent_path(item)
     %p

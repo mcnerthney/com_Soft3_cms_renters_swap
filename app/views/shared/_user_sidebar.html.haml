@@ -1,0 +1,23 @@
+
+#user_owner_picture
+ - if ( store.use_fb_avatar? && store.user.fb_avatar_url?  ) 
+  = link_to image_tag(user.fb_avatar_url + '?type=large'), store_path(store)
+ - else
+  - if store.avatar?  
+   = link_to image_tag(store.avatar.url), store_path(store)
+
+
+ %br/
+ - if user.fb_name? 
+  = link_to store.user.fb_name, store_path(store)
+ - else
+  = link_to store.name, store_path(store)
+
+
+%br/
+
+- if store.user == current_user
+ = link_to "Change image or name", edit_store_path(store)
+
+%br/
+Reviews, <br/>Endorsements, <br/>Verifications

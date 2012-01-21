@@ -95,6 +95,20 @@ def fb_friend_count
     User.where('fb_friends.fb_id' => self.fb_id).size
 end
 
+def top_items
+    rtn = []
+    self.stores do | s |
+        s.items do | i |
+           rtn.push(i) 
+        end
+    end
+end
+
+def top_messages
+    rtn = []
+end
+
+
 
   
 end
