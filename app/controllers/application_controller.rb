@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
            if  current_user.fb_id.nil? 
                #logger.debug "fb friend - without current_user.fb_id"
            else
-             if i.store.user.fb_friends.where(fb_id: current_user.fb_id).first.nil?
+             if i.store.user.nil? || i.store.user.fb_friends.where(fb_id: current_user.fb_id).first.nil?
                access = 0
                  #logger.debug "fb friend no access #{i.id}"           
              else

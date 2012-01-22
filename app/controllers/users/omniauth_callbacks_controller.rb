@@ -21,7 +21,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.set_fb_data
 
       session["devise.facebook_data"] = env["omniauth.auth"]
-      
+ 
+ 	  redirect_to root_path
+        
     end
       
   end

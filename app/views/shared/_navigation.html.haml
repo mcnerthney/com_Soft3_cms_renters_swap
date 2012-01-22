@@ -10,7 +10,6 @@
       = link_to('Log Out', destroy_user_session_path, :method=>'delete')    
   - else 
     %li
-      = link_to('Log In', new_user_session_path) 
-    %li
-      = link_to('Sign up', new_user_registration_path)  
+      #fb_signin
+        = link_to(image_tag('fb_signin.png'), user_omniauth_authorize_path(:facebook) )
  
