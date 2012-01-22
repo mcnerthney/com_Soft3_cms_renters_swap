@@ -1,6 +1,8 @@
 $blue: #3bbfce;
 $text_color: rgb(137,89,39);
 $header-width: 100%;
+$nav_bar_normal_y: -170px;
+$nav_bar_hover_y:  -399px;
 
  body{
   margin: 0;
@@ -58,7 +60,7 @@ $header-width: 100%;
   top: 150px;
   height: 160px;
   width: $header-width;
-  background: url("nav_bar.png") 0 -170px;
+  background: url("nav_bar.png") 0 $nav_bar_normal_y;
 }
 
 #navlist {
@@ -73,16 +75,14 @@ overflow:hidden;
 #navlist li, #navlist a{display:block;height:50px;    text-indent: -9999px;}
 
 #find{margin-left:61px;left:0px;width:190px}
-#find{background:url('nav_bar.png') -61px -170px;}
-#find a:hover{background: url('nav_bar.png') -61px -399px;}
+
+#find a:hover{background: url('nav_bar.png') -61px $nav_bar_hover_y;}
 
 #list{margin-left:5px;left:0px;width:190px}
-#list{background:url('nav_bar.png') -254px -170px;}
-#list a:hover{background: url('nav_bar.png') -254px -399px;}
+#list a:hover{background: url('nav_bar.png') -256px $nav_bar_hover_y;}
 
 #how{margin-left:5px;left:0px;width:190px}
-#how{background:url('nav_bar.png') -449px -170px;}
-#how a:hover{background: url('nav_bar.png') -449px -399px;}
+#how a:hover{background: url('nav_bar.png') -451px $nav_bar_hover_y;}
 
 
 /*           left-side bar               */
