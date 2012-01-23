@@ -42,14 +42,13 @@ class RentsController < ApplicationController
        @store.user_id = @user.id
        @store.activate
        if @store.save
-          redirect_to new_store_item_path(@store)
+          redirect_to edit_store_path(@store)
        else
           redirect_to :show
        end
     else
        redirect_to new_store_item_path(@user.stores.first)
     end
-    
 end  
 
   

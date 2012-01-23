@@ -24,9 +24,7 @@ class StoresController < ApplicationController
       if s.nil?
         redirect_to :action => :new
       else
-        respond_to do |format|
-          format.html # index.html.erb
-        end
+        redirect_to store_path(s.id)
       end
       
   end

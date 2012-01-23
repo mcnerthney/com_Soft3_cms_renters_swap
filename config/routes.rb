@@ -20,6 +20,8 @@ Rent::Application.routes.draw do
   match '/profile',    :to => 'pages#profile'
   match '/account',    :to => 'pages#account'
   match '/find',    :to => 'pages#find'
+  match '/list',    :to => 'pages#list'
+  match '/how',    :to => 'pages#how'
   match '/rentals',    :to => 'pages#rentals'
   # match '/account',    :to => 'pages#account'
 

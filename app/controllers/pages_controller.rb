@@ -24,6 +24,28 @@ class PagesController < ApplicationController
     @title = "Find"
   end
   
+  def list
+    authenticate_user!
+    @user = current_user
+    if @user.stores.empty?
+       @store = Store.new(params[:store])
+       @store.user_id = @user.id
+       @store.activate
+       if @store.save
+          redirect_to edit_store_path(@store)
+       else
+          redirect_to :show
+       end
+    else
+       redirect_to store_items_path(@user.stores.first)
+    end
+  end  
+   
+  def how
+    authenticate_user!
+    @title = "How"
+  end
+  
 
   def dashboard
     authenticate_user!

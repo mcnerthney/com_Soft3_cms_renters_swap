@@ -73,6 +73,7 @@ end
     @item = Item.new(params[:item])
     @item.activate
     @item.item_user_groups = UserGroup.find( params[:group_ids] ) if params[:group_ids]
+    @groups = [ UserGroup::everyone, UserGroup::all_fb_friends ]
     
     @item.store = @store
     respond_to do |format|

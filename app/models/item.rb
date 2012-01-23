@@ -22,7 +22,7 @@ class Item
     
     
   def set_default_access
-    self.item_user_groups = [ UserGroup.everyone, UserGroup.all_fb_friends ]  
+    self.item_user_groups = [ UserGroup.all_fb_friends ]  
   end
     
   def set_zipcode
