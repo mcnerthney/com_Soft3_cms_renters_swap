@@ -24,6 +24,14 @@ class PagesController < ApplicationController
     @title = "Find"
   end
   
+  def privacy
+   @title = "Privacy"
+  end
+  
+  def copyright
+   @title = "Copyright"
+  end
+  
   def list
     authenticate_user!
     @user = current_user
