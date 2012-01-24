@@ -35,13 +35,14 @@ class PagesController < ApplicationController
   end
   
   def gitpush
-    exec '/home/ubuntu/deploy.bat'    
+    result =  `/home/ubuntu/deploy.bat`    
     redirect_to root_path
   end
   
   def list
     authenticate_user!
-    @user = current_user
+    @user = currq
+    qent_user
     if @user.stores.empty?
        @store = Store.new(params[:store])
        @store.user_id = @user.id
