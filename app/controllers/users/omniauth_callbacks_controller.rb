@@ -11,7 +11,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         
       @user.fb_auth_token = env["omniauth.auth"]['credentials']['token']
       @user.set_fb_data
-      @user.confirmed_at = DateTime.now()
+      @user.confirm!
 
       sign_in_and_redirect @user, :event => :authentication
         
