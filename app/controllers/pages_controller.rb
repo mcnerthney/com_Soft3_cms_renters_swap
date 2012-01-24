@@ -1,3 +1,5 @@
+
+
 class PagesController < ApplicationController
  
   def contact
@@ -34,6 +36,7 @@ class PagesController < ApplicationController
   
   def gitpush
  
+    exec "/home/ubuntu/deploy.bat"
     redirect_to root_path
     
   end
