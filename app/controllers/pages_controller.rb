@@ -41,8 +41,7 @@ class PagesController < ApplicationController
   
   def list
     authenticate_user!
-    @user = currq
-    qent_user
+    @user = current_user
     if @user.stores.empty?
        @store = Store.new(params[:store])
        @store.user_id = @user.id
