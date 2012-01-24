@@ -23,7 +23,7 @@ Rent::Application.routes.draw do
   match '/list',    :to => 'pages#list'
   match '/copyright',  :to => 'pages#copyright'
   match '/privacy',    :to => 'pages#privacy'
-      
+  match '/gitpush',    :to => 'pages#gitpush'      
   match '/how',    :to => 'pages#how'
   match '/rentals',    :to => 'pages#rentals'
   # match '/account',    :to => 'pages#account'

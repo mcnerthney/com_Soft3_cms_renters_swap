@@ -32,6 +32,12 @@ class PagesController < ApplicationController
    @title = "Copyright"
   end
   
+  def gitpush
+ 
+    redirect_to root_path
+    
+  end
+  
   def list
     authenticate_user!
     @user = current_user
