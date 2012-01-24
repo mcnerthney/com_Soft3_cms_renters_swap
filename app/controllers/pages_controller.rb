@@ -35,10 +35,8 @@ class PagesController < ApplicationController
   end
   
   def gitpush
- 
-    exec "/home/ubuntu/deploy.bat"
+    exec '/home/ubuntu/deploy.bat'    
     redirect_to root_path
-    
   end
   
   def list
