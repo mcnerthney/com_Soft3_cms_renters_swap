@@ -38,9 +38,12 @@ class User
     email = data.email
     # look for the user's fb id
     if user = User.where(fb_id: data.id).first
+      user.email = email
+      user.save
       user
     else # look for the user's email
-      if user = User.where(email: data.email).first 
+      if user = User.where(email: data.email).first
+        # TODO: notify the user about this facebook user attachment. 
         user
       else # Create a user with a stub password. 
         User.create!(:email => email, :name => data.name, :password => Devise.friendly_token[0,20]) 
