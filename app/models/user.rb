@@ -36,11 +36,14 @@ class User
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
     email = data.email
-    #if user = User.find_email(data.email)
+    # look for the user's fb id
     if user = User.where(fb_id: data.id).first
       user
-    else # Create a user with a stub password. 
-      User.create!(:email => email, :name => data.name, :password => Devise.friendly_token[0,20]) 
+    else # look for the user's email
+      if user = User.where(:email: data.email) 
+        user
+      else # Create a user with a stub password. 
+        User.create!(:email => email, :name => data.name, :password => Devise.friendly_token[0,20]) 
     end
         
   end
