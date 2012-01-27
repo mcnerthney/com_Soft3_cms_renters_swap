@@ -26,7 +26,7 @@ class User
     
   has_many :user_groups
     
-  validates_uniqueness_of :email, :case_sensitive => false
+  #validates_uniqueness_of :email, :case_sensitive => false
   attr_accessible :avatar, :avatar_cache, :remove_avatar, :email, :password, :remember_me
   
   
