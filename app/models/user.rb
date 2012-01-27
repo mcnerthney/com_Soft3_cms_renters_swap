@@ -40,7 +40,7 @@ class User
     if user = User.where(fb_id: data.id).first
       user
     else # look for the user's email
-      if user = User.where(email: data.email) 
+      if user = User.where(email: data.email).first 
         user
       else # Create a user with a stub password. 
         User.create!(:email => email, :name => data.name, :password => Devise.friendly_token[0,20]) 
